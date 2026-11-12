@@ -1,0 +1,18 @@
+[package]
+name = "puzzle-overlay"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+puzzle-vt = { path = "../puzzle-vt" }
+puzzle-frame = { path = "../puzzle-frame" }
+puzzle-slug = { path = "../puzzle-slug" }
+kurbo.workspace = true
+
+[dev-dependencies]
+allocation-counter.workspace = true

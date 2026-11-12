@@ -1,0 +1,3 @@
+# M8.2: real Session, clipped edge glyph ink and unchanged device-pixel grid.
+# Internal assertions check both edges, all padding pixels and batch scissors.
+fractional-scroll

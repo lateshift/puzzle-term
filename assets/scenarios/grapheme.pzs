@@ -1,0 +1,36 @@
+# D-31: tmux 3.7 split at 40x6 with a VS16 emoji in both panes.
+terminal 40x6
+replay assets/fixtures/corpus/tmux-grapheme.vt
+expect-screen alternate
+expect-column 20 "│"
+expect-grapheme-count 0 21-40 "✌️"
+expect-cell 0 25 "✌️"
+render-terminal
+screenshot tmux-grapheme
+dump tmux-grapheme
+# Legacy per-scalar widths document tmux's stale base after two backspaces.
+terminal 40x6
+feed "\e[?2027l"
+replay assets/fixtures/corpus/tmux-grapheme.vt
+expect-cell 0 26 "✌"
+dump tmux-legacy
+terminal 12x1
+feed "ab✌️cd|"
+expect-cell 0 2 "✌️"
+expect-cell 0 4 "c"
+expect-cell 0 5 "d"
+expect-cell 0 6 "|"
+render-terminal
+screenshot emoji-line
+dump emoji-line
+expect-ink 0:2-1:4 1% 80%
+# VS16 changes the physical width, but must draw no glyph of its own.
+# The blank after plain ✌ occupies the same spacer as the wide cluster.
+terminal 12x2
+feed "\e[?25lab✌ cd|\r\nab✌️cd|"
+expect-cell 0 2 "✌"
+expect-cell 1 2 "✌️"
+render-terminal
+screenshot selector-equality
+expect-cells-identical 0:2-4 1:2-4
+expect-cells-identical 0:4-7 1:4-7

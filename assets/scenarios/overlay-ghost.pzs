@@ -1,0 +1,14 @@
+# M9.5: unaccepted suggestion remains outside the grid and transport.
+size 90x27
+dpr 1
+search-terminal
+overlay ghost
+render-terminal
+expect-ink-px 48:55-240:80 1% 50%
+screenshot ghost-1x
+dpr 2
+search-terminal
+overlay ghost
+render-terminal
+expect-ink-px 96:110-480:160 1% 50%
+screenshot ghost-2x

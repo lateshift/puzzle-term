@@ -1,0 +1,14 @@
+# M18.4: three urgencies, source-driven queue, no timers and no terminal text mutation.
+size 90x27
+dpr 2
+search-terminal
+feed "\e[?25l\e]99;i=low:u=0;Low urgency\e\\"
+render-terminal
+advance-ms 1100
+feed "\e]99;i=normal:d=0;Build finished\e\\\e]99;i=normal:p=body;Click activates; x dismisses\e\\"
+render-terminal
+advance-ms 1100
+feed "\e]99;i=high:u=2:c=1;Needs attention\e\\"
+render-terminal
+expect-ink-px 800:20-1440:500 5% 100%
+screenshot notifications-2x

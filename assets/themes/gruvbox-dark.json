@@ -1,0 +1,33 @@
+{
+  "name": "gruvbox-dark",
+  "displayName": "Gruvbox Dark",
+  "appearance": "dark",
+  "credit": "morhetz/gruvbox-contrib @ 150e9ca30fcd679400dc388c24930e5ec8c98a9f (MIT)",
+  "source": "https://github.com/morhetz/gruvbox-contrib/blob/150e9ca30fcd679400dc388c24930e5ec8c98a9f/xresources/gruvbox-dark.xresources",
+  "license": "MIT",
+  "licenseSource": "https://github.com/morhetz/gruvbox/blob/ef8864bb42bf244f0295d1c5a403b27e3d139695/README.md",
+  "foreground": "#ebdbb2",
+  "background": "#282828",
+  "cursor": null,
+  "cursorText": null,
+  "selectionBackground": null,
+  "selectionForeground": null,
+  "palette": [
+    "#282828",
+    "#cc241d",
+    "#98971a",
+    "#d79921",
+    "#458588",
+    "#b16286",
+    "#689d6a",
+    "#a89984",
+    "#928374",
+    "#fb4934",
+    "#b8bb26",
+    "#fabd2f",
+    "#83a598",
+    "#d3869b",
+    "#8ec07c",
+    "#ebdbb2"
+  ]
+}

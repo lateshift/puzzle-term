@@ -1,0 +1,33 @@
+{
+  "name": "gruvbox-light",
+  "displayName": "Gruvbox Light",
+  "appearance": "light",
+  "credit": "morhetz/gruvbox-contrib @ 150e9ca30fcd679400dc388c24930e5ec8c98a9f (MIT)",
+  "source": "https://github.com/morhetz/gruvbox-contrib/blob/150e9ca30fcd679400dc388c24930e5ec8c98a9f/xresources/gruvbox-light.xresources",
+  "license": "MIT",
+  "licenseSource": "https://github.com/morhetz/gruvbox/blob/ef8864bb42bf244f0295d1c5a403b27e3d139695/README.md",
+  "foreground": "#3c3836",
+  "background": "#fbf1c7",
+  "cursor": null,
+  "cursorText": null,
+  "selectionBackground": null,
+  "selectionForeground": null,
+  "palette": [
+    "#fdf4c1",
+    "#cc241d",
+    "#98971a",
+    "#d79921",
+    "#458588",
+    "#b16286",
+    "#689d6a",
+    "#7c6f64",
+    "#928374",
+    "#9d0006",
+    "#79740e",
+    "#b57614",
+    "#076678",
+    "#8f3f71",
+    "#427b58",
+    "#3c3836"
+  ]
+}

@@ -1,0 +1,3 @@
+# T0 baseline: compare three seconds of continuous output with and without
+# sixty alternating physical-window resize events per second.
+resize-storm

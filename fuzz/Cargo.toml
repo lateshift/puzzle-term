@@ -1,0 +1,56 @@
+[package]
+name = "puzzle-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+license = "MIT"
+
+[package.metadata]
+cargo-fuzz = true
+
+# Isolation is deliberate: sanitizer/nightly dependencies never enter Cargo.lock
+# at the product root, a shipped crate, or the browser dependency graph (M19.2b).
+[workspace]
+members = ["."]
+
+[workspace.dependencies]
+libfuzzer-sys = { version = "=0.4.13", default-features = false, features = ["link_libfuzzer"] }
+arbitrary = { version = "=1.4.2", default-features = false }
+
+[dependencies]
+libfuzzer-sys.workspace = true
+arbitrary.workspace = true
+puzzle-term = { path = "../crates/puzzle-term" }
+
+[lints.rust]
+unsafe_code = "deny"
+missing_docs = "deny"
+
+[[bin]]
+name = "vt_stream"
+path = "fuzz_targets/vt_stream.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "text_sizing"
+path = "fuzz_targets/text_sizing.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "kitty_graphics"
+path = "fuzz_targets/kitty_graphics.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "bridge"
+path = "fuzz_targets/bridge.rs"
+test = false
+doc = false
+bench = false
+

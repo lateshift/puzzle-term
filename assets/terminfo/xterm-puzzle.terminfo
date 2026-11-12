@@ -1,0 +1,36 @@
+# Puzzle Terminal capabilities (design §6.12, D-32).
+# Each named conformance test in this manifest exercises the advertised wire.
+# Sync: §6.5 mode 2026; synchronized-frame test.
+# RGB, Tc: §6.5 SGR 38/48; truecolor SGR test.
+# Smulx, Setulc: §6.5 SGR 4:n and 58; styled underline tests.
+# Ss, Se: §6.5 DECSCUSR; cursor-style tests.
+# Cs, Cr: §6.5 OSC 12/112; cursor-color tests.
+# Ms: §6.5 OSC 52 write; clipboard-policy test.
+# Smol, Rmol: §6.5 SGR 53/55; overline test.
+# E3: §6.5 CSI 3 J; scrollback-erase test.
+# BE, BD, PS, PE: §6.8 mode 2004; bracketed-paste test.
+# hs, tsl, fsl: §6.5 OSC 2; title test.
+# XT: §6.12 XTGETTCAP; termcap wire test.
+xterm-puzzle|puzzle|Puzzle Terminal,
+	use=xterm-256color,
+	Sync=\E[?2026%?%p1%{1}%-%tl%eh%;,
+	RGB,
+	Tc,
+	Smulx=\E[4\:%p1%dm,
+	Setulc=\E[58\:2\:\:%p1%{65536}%/%d\:%p1%{256}%/%{255}%&%d\:%p1%{255}%&%d%;m,
+	Ss=\E[%p1%d q,
+	Se=\E[2 q,
+	Cs=\E]12;%p1%s\007,
+	Cr=\E]112\007,
+	Ms=\E]52;%p1%s;%p2%s\007,
+	Smol=\E[53m,
+	Rmol=\E[55m,
+	E3=\E[3J,
+	BE=\E[?2004h,
+	BD=\E[?2004l,
+	PS=\E[200~,
+	PE=\E[201~,
+	hs,
+	tsl=\E]2;,
+	fsl=^G,
+	XT,

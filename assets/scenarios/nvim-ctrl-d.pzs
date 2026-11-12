@@ -1,0 +1,5 @@
+# Real nvim negotiation and Ctrl+D through the headless PTY/session path.
+shell "nvim --clean -c 'e README.md'"
+key ctrl+d
+frames 2
+dump after-ctrl-d

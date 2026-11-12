@@ -1,0 +1,6 @@
+[
+ ["maximize", "left", "right", "boss", "maximize"],
+ ["left", "next", "maximize", "previous", "boss"],
+ ["restore", "maximize", "next", "left", "previous", "maximize"],
+ ["left", "next", "boss", "previous", "maximize", "next", "left", "previous", "boss", "center", "restore"]
+]

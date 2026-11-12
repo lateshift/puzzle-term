@@ -1,0 +1,12 @@
+---
+source: crates/puzzle-vt/src/terminal/tests.rs
+expression: "format!(\"on\\n{}off\\n{}\", dump(&on), dump(&off))"
+---
+on
+cursor=(1,2), pending=false
+ABC·↪
+界~··
+off
+cursor=(0,3), pending=false
+ABC·
+····

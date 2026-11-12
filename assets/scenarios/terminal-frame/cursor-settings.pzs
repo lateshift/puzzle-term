@@ -1,0 +1,13 @@
+# M6.4g: the cursor reads the cell's red foreground above its blue background.
+terminal 4x1
+feed "\e[38;2;255;0;0;48;2;0;0;255mA\e[1G"
+cursor-settings block off false inverse
+render-terminal
+screenshot cursor-inverse
+expect-pixel 17 17 #ff0000 1
+expect-ink 0:0-1:1 1% 100%
+# A live setting change recolors the retained cursor without another VT edit.
+cursor-settings block off false #00ff00
+render-terminal
+screenshot cursor-hex
+expect-pixel 17 17 #00ff00 1

@@ -1,0 +1,9 @@
+# D-30: a cold pixel judge checks two retained sessions after one atlas reset.
+terminal 12x1
+feed "Atlas AB ->"
+render-terminal
+expect-cold-match
+shared-context
+screenshot shared-context
+expect-pixel 0 0 #0e121a 1
+expect-ink 0:0-1:12 1% 80%

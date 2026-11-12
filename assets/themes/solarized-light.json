@@ -1,0 +1,33 @@
+{
+  "name": "solarized-light",
+  "displayName": "Solarized Light",
+  "appearance": "light",
+  "credit": "altercation/solarized @ 62f656a02f93c5190a8753159e34b385588d5ff3 (MIT)",
+  "source": "https://github.com/altercation/solarized/blob/62f656a02f93c5190a8753159e34b385588d5ff3/xresources/solarized",
+  "license": "MIT",
+  "licenseSource": "https://github.com/altercation/solarized/blob/62f656a02f93c5190a8753159e34b385588d5ff3/LICENSE",
+  "foreground": "#657b83",
+  "background": "#fdf6e3",
+  "cursor": "#586e75",
+  "cursorText": null,
+  "selectionBackground": "#eee8d5",
+  "selectionForeground": null,
+  "palette": [
+    "#eee8d5",
+    "#dc322f",
+    "#859900",
+    "#b58900",
+    "#268bd2",
+    "#d33682",
+    "#2aa198",
+    "#073642",
+    "#fdf6e3",
+    "#cb4b16",
+    "#93a1a1",
+    "#839496",
+    "#657b83",
+    "#6c71c4",
+    "#586e75",
+    "#002b36"
+  ]
+}

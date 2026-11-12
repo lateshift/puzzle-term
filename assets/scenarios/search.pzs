@@ -1,0 +1,51 @@
+# Literal bar matches: two on one row and one across a soft wrap.
+# Each refresh uses the public Session command, bounded engine and real GPU.
+size 12x4
+dpr 1
+search-terminal
+feed "\e[?25lfoo bar bar!\r\nabcdxxxxxxxbar!\r\nend bar"
+render-terminal
+search-baseline
+search "bar"
+expect-search 4 3
+search-check
+screenshot matches-1x
+search-next
+expect-search 4 0
+search-check
+screenshot current-1x
+search-next
+expect-search 4 1
+search-check
+search-prev
+expect-search 4 0
+search-check
+search-clear
+expect-search 0 none
+search-check
+
+# Literal bar matches: two on one row and one across a soft wrap.
+# Each refresh uses the public Session command, bounded engine and real GPU.
+size 12x4
+dpr 2
+search-terminal
+feed "\e[?25lfoo bar bar!\r\nabcdxxxxxxxbar!\r\nend bar"
+render-terminal
+search-baseline
+search "bar"
+expect-search 4 3
+search-check
+screenshot matches-2x
+search-next
+expect-search 4 0
+search-check
+screenshot current-2x
+search-next
+expect-search 4 1
+search-check
+search-prev
+expect-search 4 0
+search-check
+search-clear
+expect-search 0 none
+search-check

@@ -1,0 +1,29 @@
+[package]
+name = "puzzle-sys"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+thiserror.workspace = true
+tracing.workspace = true
+
+[target.'cfg(target_os = "macos")'.dependencies]
+# D-60: all Objective-C/IOSurface interop remains in this macOS-only boundary.
+objc2.workspace = true
+block2.workspace = true
+objc2-io-surface.workspace = true
+objc2-core-foundation.workspace = true
+objc2-metal.workspace = true
+objc2-core-video.workspace = true
+# D-54: only platform glue reaches wgpu's retained Metal layer.
+objc2-quartz-core.workspace = true
+objc2-core-graphics.workspace = true
+wgpu = { workspace = true, features = ["metal"] }
+
+[dev-dependencies]
+allocation-counter.workspace = true
+
+[lints]
+workspace = true

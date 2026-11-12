@@ -1,0 +1,15 @@
+# Measured pill bounds: 1x (48,72)-(294,96); 2x (80,126)-(572,174).
+# M9.5: shortcut presentation uses effective bindings, not a separate UI table.
+size 90x27
+dpr 1
+search-terminal
+overlay leader
+render-terminal
+expect-ink-px 40:65-350:105 1% 99%
+screenshot leader-1x
+dpr 2
+search-terminal
+overlay leader
+render-terminal
+expect-ink-px 70:115-650:190 1% 99%
+screenshot leader-2x

@@ -1,0 +1,52 @@
+[package]
+name = "puzzle-embed"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+# R4: native hosts share the same secure paste-grant token generator.
+getrandom.workspace = true
+puzzle-render = { path = "../puzzle-render" }
+wgpu = { workspace = true, features = ["wgsl", "metal", "vulkan", "dx12", "gles"] }
+puzzle-term = { path = "../puzzle-term" }
+# D-44: linked only by explicit host opt-in, registered separately at runtime.
+# D-59: registration links the approved handler; provisioning remains separate.
+portable-pty.workspace = true
+tracing.workspace = true
+thiserror.workspace = true
+serde_json.workspace = true
+# Existing approved native discovery and bitmap decoder move with their owners.
+fontique.workspace = true
+png.workspace = true
+# M15/R4: platform crate only; never enters puzzle-web or shared core dependencies.
+flate2.workspace = true
+
+[target.'cfg(unix)'.dependencies]
+# R4 approval: duplicate the borrowed PTY master without platform-specific paths.
+filedescriptor.workspace = true
+# Safe process signalling supports ordered PTY teardown; time remains the opt-in observer.
+# The process feature adds no crate/version to the existing Unix dependency tree.
+rustix = { workspace = true, features = ["process", "event"] }
+
+[dev-dependencies]
+# Moved verifier fixtures retain the existing CPU/GPU scene surface in tests only.
+puzzle-term = { path = "../puzzle-term", features = ["test-scenes"] }
+tracing-subscriber.workspace = true
+allocation-counter.workspace = true
+
+[target.'cfg(target_os = "macos")'.dependencies]
+# D-53: the engine owns subscriptions; the host still supplies display identity.
+puzzle-sys = { path = "../puzzle-sys" }
+
+[features]
+# Protocol implementation is absent from ordinary desktop builds.
+# Linking alone grants no producer authority and registers no surface.
+# Observation never changes the production slice or scheduling policy.
+lock-metrics = []
+# Harness tests can invoke owner-side diagnostic closures; normal hosts cannot.
+test-support = []
+
+[lints]
+workspace = true

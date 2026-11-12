@@ -1,0 +1,8 @@
+# Captured PTY streams contain ESC, CRLF and trailing spaces as protocol bytes.
+assets/fixtures/preview/*.vt binary
+# Generated parser corpora also contain ESC and CRLF as measured bytes.
+assets/fixtures/corpus/*.vt binary
+# Fuzz seeds are exact protocol bytes too; never normalize CRLF or diff inputs.
+fuzz/seeds/** binary
+
+# Approved simulator recordings retain exact OSC, APC, CRLF and signed bytes.

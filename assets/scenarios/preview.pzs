@@ -1,0 +1,67 @@
+# PREVIEW (replaced in M6): replay privacy-reviewed PTY captures through VT and M4.
+# Each fresh terminal keeps fixtures independent; 1x enables D-27 light hinting.
+terminal 80x24
+replay assets/fixtures/preview/ls.vt
+expect-text 0 "README.md"
+expect-text 4 "README.md"
+render-terminal
+screenshot ls-1x
+dump ls-1x
+dpr 2
+render-terminal
+screenshot ls-2x
+terminal 80x24
+replay assets/fixtures/preview/git-log.vt
+expect-text 0 "* 022a8d1"
+expect-text 3 "* 0030e64"
+dpr 1
+render-terminal
+screenshot git-log-1x
+dump git-log-1x
+dpr 2
+render-terminal
+screenshot git-log-2x
+terminal 80x24
+replay assets/fixtures/preview/chart.vt
+expect-text 0 "puzzle$ color chart"
+expect-text 1 "000:"
+dpr 1
+render-terminal
+screenshot chart-1x
+expect-pixel 60 44 #000000 0
+expect-pixel 76 44 #cd0000 0
+dump chart-1x
+dpr 2
+render-terminal
+screenshot chart-2x
+expect-pixel 104 71 #000000 0
+expect-pixel 136 71 #cd0000 0
+terminal 80x24
+replay assets/fixtures/preview/box.vt
+expect-text 0 "puzzle$ box drawing preview"
+expect-text 1 "╭─────┬─────╮"
+expect-text 7 "styles: italic  inverse  bold"
+dpr 1
+render-terminal
+screenshot box-1x
+expect-pixel 145 150 #e5e5e5 0
+dump box-1x
+dpr 2
+render-terminal
+screenshot box-2x
+expect-pixel 273 276 #e5e5e5 0
+terminal 80x24
+replay assets/fixtures/preview/vim-open.vt
+expect-screen alternate
+expect-text 0 "Puzzle Terminal static preview"
+expect-text 6 "Box drawing:"
+dpr 1
+render-terminal
+screenshot vim-1x
+dump vim-1x
+dpr 2
+render-terminal
+screenshot vim-2x
+replay assets/fixtures/preview/vim-close.vt
+expect-screen primary
+dump vim-restored

@@ -1,0 +1,24 @@
+# M9.4: public painters on parsed prompt/bell, selection and search models.
+size 90x27
+dpr 1
+search-terminal
+overlay models
+overlay-hover-scrollbar
+render-terminal
+expect-search 3 0
+expect-pixel 500 20 #223344 0
+expect-pixel 320 521 #335544 0
+expect-pixel 732 400 #202020 0
+expect-ink-px 10:10-720:520 1% 50%
+screenshot models-1x
+dpr 2
+search-terminal
+overlay models
+overlay-hover-scrollbar
+render-terminal
+expect-search 3 0
+expect-pixel 1000 40 #223344 0
+expect-pixel 640 992 #335544 0
+expect-pixel 1452 800 #202020 0
+expect-ink-px 20:20-1400:1000 1% 50%
+screenshot models-2x

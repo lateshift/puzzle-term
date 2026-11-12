@@ -1,0 +1,10 @@
+---
+source: crates/puzzle-vt/src/terminal/tests.rs
+expression: "format!(\"history={}\\n{}\", term.primary.ring.scrollback_len(), dump(&term))"
+---
+history=1
+cursor=(2,0), pending=false
+two···
+tri···
+······
+end···

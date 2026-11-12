@@ -1,0 +1,650 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "accessibility": {
+      "additionalProperties": true,
+      "properties": {
+        "screenReader": {
+          "default": false,
+          "description": " Expose a screen-reader oriented text view.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "bell": {
+      "additionalProperties": true,
+      "properties": {
+        "sound": {
+          "default": false,
+          "description": " Play a sound when BEL arrives.",
+          "type": "boolean"
+        },
+        "visual": {
+          "default": true,
+          "description": " Flash the terminal when BEL arrives.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "clipboard": {
+      "additionalProperties": true,
+      "properties": {
+        "osc52Read": {
+          "default": "deny",
+          "description": " Policy for terminal-requested clipboard reads.",
+          "enum": [
+            "allow",
+            "deny"
+          ],
+          "type": "string"
+        },
+        "osc52Write": {
+          "default": "allow",
+          "description": " Policy for terminal-requested clipboard writes.",
+          "enum": [
+            "allow",
+            "deny"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cursor": {
+      "additionalProperties": true,
+      "properties": {
+        "allowAppStyle": {
+          "default": true,
+          "description": " Ignore an application's cursor shape without losing its DECRQSS answer.",
+          "type": "boolean"
+        },
+        "animate": {
+          "default": false,
+          "description": " Animate cursor position between cells.",
+          "type": "boolean"
+        },
+        "blink": {
+          "anyOf": [
+            {
+              "const": "auto"
+            },
+            {
+              "type": "boolean"
+            }
+          ],
+          "default": "auto",
+          "description": " Defer to the application or force cursor blinking on or off."
+        },
+        "blinkTimeoutS": {
+          "default": 15.0,
+          "description": " Seconds of inactivity before cursor blink stops.",
+          "type": "integer"
+        },
+        "color": {
+          "default": "theme",
+          "description": " Choose the theme cursor, inverse cell colors or a fixed hex color.",
+          "type": "string"
+        },
+        "style": {
+          "default": "block",
+          "description": " Default cursor geometry when the application has no override.",
+          "enum": [
+            "block",
+            "bar",
+            "underline",
+            "block_hollow"
+          ],
+          "type": "string"
+        },
+        "thickness": {
+          "default": 1.0,
+          "description": " Bar and underline cursor thickness in logical pixels.",
+          "maximum": 16.0,
+          "minimum": 0.5,
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "font": {
+      "additionalProperties": true,
+      "properties": {
+        "atlasMaxPx": {
+          "default": 16.0,
+          "description": " Largest device size selected for an atlas glyph.",
+          "maximum": 256.0,
+          "minimum": 1.0,
+          "type": "integer"
+        },
+        "baselineOffset": {
+          "default": 0.0,
+          "description": " Offset the font baseline within its cell.",
+          "type": "number"
+        },
+        "blending": {
+          "default": "native",
+          "description": " Text compositing transfer function.",
+          "enum": [
+            "native",
+            "linear"
+          ],
+          "type": "string"
+        },
+        "builtinGlyphs": {
+          "default": true,
+          "description": " Generate box, block and Braille glyphs from device cells.",
+          "type": "boolean"
+        },
+        "cellHeight": {
+          "default": 0.0,
+          "description": " Device-independent adjustment to cell height.",
+          "type": "number"
+        },
+        "cellWidth": {
+          "default": 0.0,
+          "description": " Device-independent adjustment to cell width.",
+          "type": "number"
+        },
+        "fallback": {
+          "default": [],
+          "description": " Ordered additional font family fallbacks.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "family": {
+          "default": "JetBrains Mono",
+          "description": " Primary monospace family.",
+          "type": "string"
+        },
+        "features": {
+          "default": [],
+          "description": " OpenType feature tags applied during shaping.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "hinting": {
+          "default": "auto",
+          "description": " Outline fitting policy at small device sizes.",
+          "enum": [
+            "auto",
+            "none",
+            "light",
+            "native"
+          ],
+          "type": "string"
+        },
+        "ligatures": {
+          "default": true,
+          "description": " Enable coding ligatures in shaped runs.",
+          "type": "boolean"
+        },
+        "ligaturesBreakAtCursor": {
+          "default": true,
+          "description": " Break a ligature at the editing cursor.",
+          "type": "boolean"
+        },
+        "lineHeight": {
+          "default": 1.2000000476837158,
+          "description": " Multiplier for line height beyond face metrics.",
+          "maximum": 3.0,
+          "minimum": 0.5,
+          "type": "number"
+        },
+        "rasterizer": {
+          "default": "oracle",
+          "description": " Bitmap glyph source when an atlas backend is enabled.",
+          "enum": [
+            "oracle",
+            "browser",
+            "platform"
+          ],
+          "type": "string"
+        },
+        "renderer": {
+          "default": "auto",
+          "description": " Glyph backend selector.",
+          "enum": [
+            "auto",
+            "slug",
+            "atlas"
+          ],
+          "type": "string"
+        },
+        "size": {
+          "default": 14.0,
+          "description": " Font size in logical pixels.",
+          "maximum": 200.0,
+          "minimum": 4.0,
+          "type": "number"
+        },
+        "snapCapHeight": {
+          "default": true,
+          "description": " Snap unhinted capitals within the allowed size nudge.",
+          "type": "boolean"
+        },
+        "symbolOverflow": {
+          "default": true,
+          "description": " Permit a symbol to enter a following empty cell.",
+          "type": "boolean"
+        },
+        "symbols": {
+          "default": "Symbols Nerd Font Mono",
+          "description": " Bundled symbol fallback family.",
+          "type": "string"
+        },
+        "thicken": {
+          "default": false,
+          "description": " Optional optical weight on Slug coverage.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "images": {
+      "additionalProperties": true,
+      "properties": {
+        "storageLimitMb": {
+          "default": 320.0,
+          "description": " Per-session image allowance in MiB, accounted separately for decoded and GPU storage; each image is charged max(decoded RGBA, tiled GPU bytes including borders); zero disables images.",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "keyboard": {
+      "additionalProperties": true,
+      "properties": {
+        "backspace": {
+          "default": "del",
+          "description": " Choose DEL or BS for the Backspace key.",
+          "enum": [
+            "del",
+            "bs"
+          ],
+          "type": "string"
+        },
+        "bindings": {
+          "default": [],
+          "description": " Layered keybinding declarations.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "clearDefaults": {
+          "default": false,
+          "description": " Start with an empty binding table.",
+          "type": "boolean"
+        },
+        "optionAsAlt": {
+          "default": "none",
+          "description": " Treat Option as Alt according to platform policy.",
+          "enum": [
+            "none",
+            "left",
+            "right",
+            "both"
+          ],
+          "type": "string"
+        },
+        "sequenceTimeoutMs": {
+          "default": 0.0,
+          "description": " Timeout for unfinished key sequences in milliseconds.",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "links": {
+      "additionalProperties": true,
+      "properties": {
+        "detectUrls": {
+          "default": true,
+          "description": " Recognize plain-text URLs under the pointer.",
+          "type": "boolean"
+        },
+        "open": {
+          "default": "modifierClick",
+          "description": " User gesture required to open a hyperlink.",
+          "enum": [
+            "modifierClick",
+            "disabled"
+          ],
+          "type": "string"
+        },
+        "schemes": {
+          "default": [
+            "http",
+            "https",
+            "mailto"
+          ],
+          "description": " Schemes allowed when opening a detected link.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "logging": {
+      "additionalProperties": true,
+      "properties": {
+        "file": {
+          "default": "",
+          "description": " Optional native log path; an empty value disables the file sink.",
+          "type": "string"
+        },
+        "filter": {
+          "default": "info",
+          "description": " Structured tracing filter specification.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "mouse": {
+      "additionalProperties": true,
+      "properties": {
+        "alternateScroll": {
+          "default": true,
+          "description": " Convert wheel events into keys on the alternate screen.",
+          "type": "boolean"
+        },
+        "hideWhileTyping": {
+          "default": true,
+          "description": " Hide the pointer temporarily while typing.",
+          "type": "boolean"
+        },
+        "shiftCapture": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "enum": [
+                "always",
+                "never"
+              ]
+            }
+          ],
+          "default": false,
+          "description": " Shift mouse capture: false/true are program-overridable defaults; always/never are fixed. Legacy mouse.shiftSelects and mouse_shift_selects map true to never, false to always. Shift-wheel stays local (§7.4)."
+        }
+      },
+      "type": "object"
+    },
+    "performance": {
+      "additionalProperties": true,
+      "properties": {
+        "parseBudgetMs": {
+          "default": 8.0,
+          "description": " Maximum parser time allowed for one output feed call.",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "profile": {
+      "default": "",
+      "description": " Active profile name, empty for none.",
+      "type": "string"
+    },
+    "profiles": {
+      "additionalProperties": true,
+      "default": {},
+      "description": " Named profile override maps.",
+      "type": "object"
+    },
+    "render": {
+      "additionalProperties": true,
+      "properties": {
+        "extendEdgeBackground": {
+          "default": false,
+          "description": " Fill padded edges with the default background.",
+          "type": "boolean"
+        },
+        "glyphMemoryMb": {
+          "default": 48.0,
+          "description": " Memory in MiB for each glyph atlas separately (vector and raster); minimum is one mask page plus one RGBA page (or the vector page minimum, if larger).",
+          "maximum": 4294967295.0,
+          "minimum": 20.0,
+          "type": "integer"
+        },
+        "linearBlending": {
+          "default": false,
+          "description": " Composite text and backgrounds in linear light.",
+          "type": "boolean"
+        },
+        "padding": {
+          "default": 4.0,
+          "description": " Inset between the terminal grid and window edge.",
+          "type": "number"
+        },
+        "power": {
+          "default": "low",
+          "description": " GPU power preference for a newly created device.",
+          "enum": [
+            "low",
+            "high"
+          ],
+          "type": "string"
+        },
+        "settleMs": {
+          "default": 8.0,
+          "description": " Coalesce a short output burst before its next refresh presentation.",
+          "maximum": 16.0,
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "syncTimeoutMs": {
+          "default": 200.0,
+          "description": " Maximum wait before presenting synchronized output.",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "scrollback": {
+      "additionalProperties": true,
+      "properties": {
+        "lines": {
+          "default": 10000.0,
+          "description": " Maximum retained primary-screen history rows.",
+          "maximum": 1000000.0,
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "maxBytes": {
+          "default": 33554432.0,
+          "description": " Maximum retained primary-screen history bytes.",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "scrolling": {
+      "additionalProperties": true,
+      "properties": {
+        "multiplier": {
+          "default": 3.0,
+          "description": " Wheel movement multiplier in text rows.",
+          "type": "number"
+        },
+        "onInput": {
+          "default": true,
+          "description": " Return to the newest row when the user types.",
+          "type": "boolean"
+        },
+        "onOutput": {
+          "default": false,
+          "description": " Return to the newest row when output arrives.",
+          "type": "boolean"
+        },
+        "smooth": {
+          "default": true,
+          "description": " Interpolate viewport movement between rows.",
+          "type": "boolean"
+        },
+        "snapToRows": {
+          "default": true,
+          "description": " Settle fractional scrolling on row boundaries.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "selection": {
+      "additionalProperties": true,
+      "properties": {
+        "copyOnSelect": {
+          "default": false,
+          "description": " Copy selected text when a drag completes.",
+          "type": "boolean"
+        },
+        "lineEndSnap": {
+          "default": true,
+          "description": " Snap simple selection endpoints in default trailing blanks to the line end.",
+          "type": "boolean"
+        },
+        "trimTrailing": {
+          "default": true,
+          "description": " Remove default trailing blanks from copied lines.",
+          "type": "boolean"
+        },
+        "wordSeparators": {
+          "default": " `│|:\"'()[]{}<>,;",
+          "description": " Characters that delimit selection words.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "session": {
+      "additionalProperties": true,
+      "properties": {
+        "abnormalExitMs": {
+          "default": 250.0,
+          "description": " Hold even with close when an early abnormal exit is shorter than this.",
+          "maximum": 60000.0,
+          "minimum": 0.0,
+          "type": "integer"
+        },
+        "onExit": {
+          "default": "close",
+          "description": " Keep or close a normally exited child session.",
+          "enum": [
+            "close",
+            "hold"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "shellIntegration": {
+      "default": "detect",
+      "description": " Automatic native shell snippets; Apple bash 3.2 retains manual sourcing and normal login behavior.",
+      "enum": [
+        "detect",
+        "none",
+        "bash",
+        "zsh",
+        "fish"
+      ],
+      "type": "string"
+    },
+    "theme": {
+      "additionalProperties": true,
+      "properties": {
+        "backgroundOpacity": {
+          "default": 1.0,
+          "description": " Opacity of the terminal background surface.",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        "boldIsBright": {
+          "default": false,
+          "description": " Map bold base ANSI colors to bright ANSI colors.",
+          "type": "boolean"
+        },
+        "dark": {
+          "default": "puzzle-dark",
+          "description": " Built-in or custom theme for dark appearance.",
+          "type": "string"
+        },
+        "exportCssVariables": {
+          "default": true,
+          "description": " Expose resolved theme tokens as CSS variables.",
+          "type": "boolean"
+        },
+        "light": {
+          "default": "puzzle-light",
+          "description": " Built-in or custom theme for light appearance.",
+          "type": "string"
+        },
+        "minimumContrast": {
+          "default": 1.0,
+          "description": " Minimum foreground/background contrast at render time.",
+          "maximum": 21.0,
+          "minimum": 1.0,
+          "type": "number"
+        },
+        "mode": {
+          "default": "auto",
+          "description": " Choose host-following or forced appearance.",
+          "enum": [
+            "auto",
+            "light",
+            "dark"
+          ],
+          "type": "string"
+        },
+        "transitionMs": {
+          "default": 0.0,
+          "description": " Crossfade duration for a theme change.",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "themes": {
+      "additionalProperties": true,
+      "default": {},
+      "description": " Custom named theme specifications.",
+      "type": "object"
+    },
+    "unicode": {
+      "additionalProperties": true,
+      "properties": {
+        "ambiguousWidth": {
+          "default": 1.0,
+          "description": " Cell width used for ambiguous Unicode characters.",
+          "maximum": 2.0,
+          "minimum": 1.0,
+          "type": "integer"
+        },
+        "graphemeWidth": {
+          "default": "unicode",
+          "description": " Choose grapheme clustering or legacy per-scalar cell widths.",
+          "enum": [
+            "unicode",
+            "legacy"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "Puzzle Terminal settings",
+  "type": "object"
+}

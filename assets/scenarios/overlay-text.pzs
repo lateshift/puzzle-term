@@ -1,0 +1,20 @@
+# Bundled fonts only: natural text, icon fallback and transformed COLRv1.
+size 80x15
+dpr 1
+search-terminal
+feed "\e[?25l"
+overlay text
+render-terminal
+expect-ink-px 35:35-390:105 2% 60%
+expect-ink-px 35:105-350:185 2% 60%
+expect-ink-px 395:150-600:265 1% 70%
+screenshot text-1x
+dpr 2
+search-terminal
+feed "\e[?25l"
+overlay text
+render-terminal
+expect-ink-px 70:70-780:210 2% 60%
+expect-ink-px 70:210-700:370 2% 60%
+expect-ink-px 790:300-1200:530 1% 70%
+screenshot text-2x

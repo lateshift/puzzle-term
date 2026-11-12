@@ -1,0 +1,31 @@
+# OSC progress and reduced-motion visual bell, using production sources.
+# zoneError = OKLab mix(#0e121a, #e06c75, 0.55) = #7a434a.
+size 64x12
+dpr 1
+search-terminal
+overlay status
+render-terminal
+expect-pixel 10 0 #7a434a 2
+screenshot status-bell-1x
+advance-ms 201
+render-terminal
+expect-pixel 400 0 #0e121a 0
+expect-pixel 10 0 #7a434a 2
+screenshot status-progress-1x
+feed "\e]9;4;0;0\e\\"
+render-terminal
+expect-pixel 10 0 #0e121a 0
+dpr 2
+search-terminal
+overlay status
+render-terminal
+expect-pixel 20 1 #7a434a 2
+screenshot status-bell-2x
+advance-ms 201
+render-terminal
+expect-pixel 800 0 #0e121a 0
+expect-pixel 20 1 #7a434a 2
+screenshot status-progress-2x
+feed "\e]9;4;0;0\e\\"
+render-terminal
+expect-pixel 20 1 #0e121a 0

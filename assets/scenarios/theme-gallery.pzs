@@ -1,0 +1,20 @@
+# M6.6 theme pair switching and all fourteen generated built-ins.
+# GPU readback within theme-gallery checks the authored clear and visible ink.
+terminal 48x7
+feed "\e[1;1HTheme gallery: Hamburgefonstiv 0Oo1lI\e[2;1H\e[31mRED\e[0m  \e[32mGREEN\e[0m  \e[34mBLUE\e[0m  truecolor \e[38;2;210;90;180mRGB\e[0m\e[3;1HRegular bold \e[1mBOLD\e[0m italic \e[3mITALIC\e[0m\e[4;1HBox: ┌──┐\e[5;1H     │OK│\e[6;1H     └──┘"
+appearance light
+render-terminal
+expect-pixel 0 0 #fafafa 0
+expect-ink 0:0-6:47 1% 80%
+screenshot auto-light
+appearance dark
+render-terminal
+expect-pixel 0 0 #0e121a 0
+expect-ink 0:0-6:47 1% 80%
+screenshot auto-dark
+set theme.mode light
+render-terminal
+expect-pixel 0 0 #fafafa 0
+screenshot forced-light
+set theme.mode auto
+theme-gallery

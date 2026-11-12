@@ -1,0 +1,32 @@
+{
+  "name": "puzzle-dark",
+  "displayName": "Puzzle Dark",
+  "appearance": "dark",
+  "credit": "Puzzle Terminal original palette (MIT)",
+  "source": "Puzzle Terminal",
+  "license": "MIT",
+  "foreground": "#e5e9f0",
+  "background": "#0e121a",
+  "cursor": "#98c379",
+  "cursorText": "#0e121a",
+  "selectionBackground": "#35465d",
+  "selectionForeground": "#ffffff",
+  "palette": [
+    "#222b36",
+    "#e06c75",
+    "#98c379",
+    "#e5c07b",
+    "#61afef",
+    "#c678dd",
+    "#56b6c2",
+    "#abb2bf",
+    "#5c6370",
+    "#ff7b86",
+    "#b4df8a",
+    "#f7d292",
+    "#83c5f4",
+    "#d992e9",
+    "#72d0da",
+    "#ffffff"
+  ]
+}

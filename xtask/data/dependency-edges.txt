@@ -1,0 +1,11 @@
+# Internal dependency directions; reviewed alongside Cargo manifests.
+puzzle-text: puzzle-slug
+puzzle-overlay: puzzle-vt puzzle-frame puzzle-slug
+puzzle-term: puzzle-bus puzzle-vt puzzle-text puzzle-slug puzzle-frame puzzle-overlay
+puzzle-render: puzzle-frame puzzle-slug
+puzzle-web: puzzle-term puzzle-render
+puzzle-desktop: puzzle-term puzzle-render puzzle-sys puzzle-embed
+puzzle-ffi: puzzle-embed puzzle-term
+puzzle-embed: puzzle-term puzzle-render puzzle-sys
+xtask: puzzle-slug puzzle-text puzzle-term
+fuzz: puzzle-term

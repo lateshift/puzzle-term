@@ -1,0 +1,3 @@
+# M18.1: xterm OSC 17/19 override selected paper/ink at both DPRs.
+# Independent exact pixel/ink/unchanged-outside assertions run before screenshots.
+osc-selection-scenes

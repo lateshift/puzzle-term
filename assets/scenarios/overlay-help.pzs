@@ -1,0 +1,15 @@
+# The ink crop includes the panel edge; an all-paper crop cannot test occupancy.
+# M9.5: shortcut presentation uses effective bindings, not a separate UI table.
+size 90x27
+dpr 1
+search-terminal
+overlay help
+render-terminal
+expect-ink-px 40:15-550:170 1% 99%
+screenshot help-1x
+dpr 2
+search-terminal
+overlay help
+render-terminal
+expect-ink-px 40:30-1100:340 1% 99%
+screenshot help-2x

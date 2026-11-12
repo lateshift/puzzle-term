@@ -1,0 +1,27 @@
+# Full OSC 72 host flow with view-local points, padding and DPR 2.
+dpr 2
+drag-start
+drag-feed "\e]72;t=a:i=7;text/plain\e\\"
+expect-drag-effect registration
+drag-enter 16 44 3 text/plain
+expect-drag-reply "\e]72;t=m:x=1:y=2:X=24:Y=80:o=3:m=0:i=7;text/plain\e\\"
+drag-feed "\e]72;t=r:x=1\e\\"
+expect-drag-reply "\e]72;t=R:x=1:y=0:Y=0:m=0:i=7;EPERM\e\\"
+drag-feed "\e]72;t=m:o=1;text/plain\e\\"
+expect-drag-effect acceptance
+drag-move 24 44 3 text/plain
+expect-drag-reply "\e]72;t=m:x=2:y=2:X=40:Y=80:o=3:i=7;\e\\"
+drag-drop 24 44 3 text/plain "hello"
+expect-drag-reply "\e]72;t=M:x=2:y=2:X=40:Y=80:o=3:m=0:i=7;text/plain\e\\"
+drag-feed "\e]72;t=r:x=1\e\\\e[5n"
+expect-drag-reply "\e]72;t=r:x=1:m=0:i=7;aGVsbG8=\e\\\e]72;t=r:x=1:m=0:i=7;\e\\\e[0n"
+drag-feed "\e]72;t=r:o=1\e\\"
+expect-drag-effect concluded
+drag-enter 4 4 1 text/plain
+expect-drag-reply "\e]72;t=m:x=0:y=0:X=0:Y=0:o=1:m=0:i=7;text/plain\e\\"
+drag-leave
+expect-drag-reply "\e]72;t=m:x=-1:y=-1:i=7;\e\\"
+drag-feed "\e]72;t=A\e\\"
+expect-drag-effect unregister
+drag-drop 8 8 1 text/plain "ignored"
+expect-drag-reply ""

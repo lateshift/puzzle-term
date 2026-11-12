@@ -1,0 +1,25 @@
+<!doctype html>
+<!-- Explicit dev build: measurement code and embedded corpora never enter web/index.html. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Puzzle Terminal browser benchmarks</title>
+  <link data-trunk rel="rust" data-wasm-opt="3" href="../../crates/puzzle-web/Cargo.toml">
+  <link data-trunk rel="copy-file" href="benchmark.js">
+  <link data-trunk rel="copy-file" href="benchmark-m8.js">
+  <!-- Real runtime assets support the submitted-frame cadence probe. -->
+  <link data-trunk rel="copy-file" href="../../assets/fonts/JetBrainsMono-Variable.ttf">
+  <link data-trunk rel="copy-file" href="../../assets/fonts/JetBrainsMono-Italic-Variable.ttf">
+  <link data-trunk rel="copy-file" href="../../assets/fonts/SymbolsNerdFontMono-Regular.ttf">
+  <link data-trunk rel="copy-file" href="../../assets/fontpacks/jetbrains-regular.pzfp">
+</head>
+<body>
+  <h1>Browser parser and frame benchmarks</h1>
+  <p>Release wasm, five warmed 8 MiB parser samples; frame medians at 240 × 70, DPR 1.
+     Construction, corpus expansion and font preparation are outside the timers.</p>
+  <button id="run" disabled>Measure</button>
+  <pre id="results">Loading the development build…</pre>
+  <div id="terminal" style="width:800px;height:480px"></div>
+  <script type="module" src="benchmark.js"></script>
+</body>
+</html>

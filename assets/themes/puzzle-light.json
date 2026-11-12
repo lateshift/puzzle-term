@@ -1,0 +1,32 @@
+{
+  "name": "puzzle-light",
+  "displayName": "Puzzle Light",
+  "appearance": "light",
+  "credit": "Puzzle Terminal original palette (MIT)",
+  "source": "Puzzle Terminal",
+  "license": "MIT",
+  "foreground": "#242936",
+  "background": "#fafafa",
+  "cursor": "#2458a5",
+  "cursorText": "#ffffff",
+  "selectionBackground": "#c8d9ed",
+  "selectionForeground": "#1d2630",
+  "palette": [
+    "#242936",
+    "#b4233c",
+    "#2e7d32",
+    "#805f00",
+    "#2458a5",
+    "#893595",
+    "#006d78",
+    "#5c6370",
+    "#4a5261",
+    "#a80d24",
+    "#1d6b2c",
+    "#715000",
+    "#174a91",
+    "#763084",
+    "#005e69",
+    "#f3f4f6"
+  ]
+}

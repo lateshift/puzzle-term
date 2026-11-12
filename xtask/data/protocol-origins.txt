@@ -1,0 +1,13 @@
+ecma48
+dec
+xterm
+kitty
+finalterm
+iterm2
+conemu
+rxvt
+contour
+rockorager
+apple
+vte
+uapi

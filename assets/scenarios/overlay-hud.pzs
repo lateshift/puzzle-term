@@ -1,0 +1,20 @@
+# Build once, then paint the observed completed-frame facts.
+size 64x12
+dpr 1
+search-terminal
+overlay hud
+render-terminal
+feed "\r\nSecond completed frame"
+overlay hud-sample
+render-terminal
+expect-ink-px 130:10-540:80 1% 99%
+screenshot hud-1x
+dpr 2
+search-terminal
+overlay hud
+render-terminal
+feed "\r\nDPR 2 completed frame"
+overlay hud-sample
+render-terminal
+expect-ink-px 270:20-1040:160 1% 99%
+screenshot hud-2x

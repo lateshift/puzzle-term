@@ -1,0 +1,82 @@
+# M4: shaped font text and procedural cells pass through the D-28 Slug seam.
+# The corner remains black; each real GPU readback must contain bounded ink.
+dpr 1
+render-text 16 16 12 "Hamburgefonstiv 0Oo1lI -> => != =="
+screenshot regular-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-270:48 0.1% 50%
+render-text 16 16 12 "Hamburgefonstiv 0Oo1lI" style=bold
+screenshot bold-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-186:48 0.1% 50%
+render-text 16 16 12 "Hamburgefonstiv 0Oo1lI" style=italic
+screenshot italic-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-186:48 0.1% 50%
+render-text 16 16 12 "-> => != ==" ligatures=off
+screenshot ligatures-off
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-109:48 0.1% 50%
+render-text 16 16 16 "Nerd   Tofu ͸"
+screenshot symbol-and-tofu
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-172:54 0.1% 50%
+render-grid 24 4 "┌────┬────┐\n│▓░▒ │⠿⣿  │\n└────┴────┘\n"
+screenshot grid-1x
+expect-pixel 0 0 #000000 0
+expect-pixel 23 25 #ffffff 20
+expect-pixel 24 25 #ffffff 20
+expect-pixel 20 34 #ffffff 20
+expect-pixel 20 35 #ffffff 20
+expect-ink-px 0:0-224:108 0.1% 70%
+dpr 2
+render-text 16 16 12 "Hamburgefonstiv 0Oo1lI -> => != =="
+screenshot regular-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-542:65 0.1% 50%
+render-grid 24 4 "┌────┬────┐\n│▓░▒ │⠿⣿  │\n└────┴────┘\n"
+screenshot grid-2x
+expect-pixel 0 0 #000000 0
+expect-pixel 32 34 #ffffff 20
+expect-pixel 33 34 #ffffff 20
+expect-pixel 24 52 #ffffff 20
+expect-pixel 24 53 #ffffff 20
+expect-ink-px 0:0-416:180 0.1% 70%
+render-grid 16 6 "╭──╮ ┄┄ ╌╌ ┅┅\n│  │ ╎╎ ┆┆ ┊┊\n╰──╯ ┈┈ ┉┉\n     ╍╍ ┅┅ ┉┉\n    ╎ ╏ ┆ ┇ ┊ ┋\n    ╎ ╏ ┆ ┇ ┊ ┋"
+screenshot arc-dash-2x
+expect-pixel 0 0 #000000 0
+expect-pixel 16 34 #000000 0
+expect-pixel 31 34 #ffffff 20
+expect-pixel 32 34 #ffffff 20
+expect-pixel 96 34 #000000 0
+expect-pixel 98 34 #ffffff 20
+expect-pixel 100 34 #000000 0
+expect-ink-px 0:0-288:254 0.1% 60%
+dpr 1
+render-grid 16 6 "╭──╮ ┄┄ ╌╌ ┅┅\n│  │ ╎╎ ┆┆ ┊┊\n╰──╯ ┈┈ ┉┉\n     ╍╍ ┅┅ ┉┉\n    ╎ ╏ ┆ ┇ ┊ ┋\n    ╎ ╏ ┆ ┇ ┊ ┋"
+screenshot arc-dash-1x
+expect-pixel 0 0 #000000 0
+expect-pixel 16 25 #000000 0
+expect-pixel 23 25 #ffffff 20
+expect-pixel 24 25 #ffffff 20
+expect-pixel 56 25 #000000 0
+expect-pixel 57 25 #ffffff 20
+expect-pixel 58 25 #000000 0
+expect-ink-px 0:0-160:146 0.1% 60%
+dpr 2
+render-text 16 16 12 "Hamburgefonstiv 0Oo1lI" style=bold
+screenshot bold-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-362:65 0.1% 50%
+render-text 16 16 12 "Hamburgefonstiv 0Oo1lI" style=italic
+screenshot italic-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-362:65 0.1% 50%
+render-text 16 16 12 "-> => != ==" ligatures=off
+screenshot ligatures-off-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-197:65 0.1% 50%
+render-text 16 16 16 "Nerd   Tofu ͸"
+screenshot symbol-and-tofu-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-298:74 0.1% 50%

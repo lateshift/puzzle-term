@@ -1,0 +1,60 @@
+# M18.7: sparse OSC 66 headings, fractional alignment and mixed ordinary text.
+terminal 32x14
+feed "\e[?25l\e]66;s=2;Heading\e\\\e[4;1H\e]66;s=3;ABC\e\\\e[8;1H\e]66;s=2:n=1:d=2:h=2:v=2;Fraction\e\\\e[11;1Hplain \e]66;s=2:w=2;mix\e\\ BC"
+dpr 1
+render-terminal
+expect-text 0 "Heading"
+expect-text 3 "ABC"
+expect-text 10 "plain mix BC"
+expect-ink 0:0-2:14 3% 60%
+expect-ink 3:0-6:9 3% 60%
+expect-ink 7:0-9:16 1% 45%
+expect-ink 0:16-6:32 0% 0%
+expect-cold-match
+screenshot sizing-1x
+dump sizing-1x
+dpr 2
+render-terminal
+expect-ink 0:0-2:14 3% 60%
+expect-ink 3:0-6:9 3% 60%
+expect-ink 7:0-9:16 1% 45%
+expect-ink 0:16-6:32 0% 0%
+expect-cold-match
+screenshot sizing-2x
+dump sizing-2x
+# Preserve one rectangular A followed by ordinary B/C across 8→5→8 columns.
+terminal 8x8
+feed "\e[?25l\e]66;s=2;A\e\\BC"
+dpr 1
+render-terminal
+expect-ink 0:0-2:2 5% 60%
+expect-ink 2:0-8:8 0% 0%
+expect-cold-match
+screenshot reflow-8-1x
+resize-terminal 5x8
+render-terminal
+expect-text 0 "ABC"
+expect-ink 0:0-2:2 5% 60%
+expect-cold-match
+screenshot reflow-5-1x
+resize-terminal 8x8
+render-terminal
+expect-text 0 "ABC"
+expect-cold-match
+screenshot reflow-back-1x
+dpr 2
+render-terminal
+expect-ink 0:0-2:2 5% 60%
+expect-cold-match
+screenshot reflow-8-2x
+resize-terminal 5x8
+render-terminal
+expect-text 0 "ABC"
+expect-cold-match
+screenshot reflow-5-2x
+resize-terminal 8x8
+render-terminal
+expect-text 0 "ABC"
+expect-ink 2:0-8:8 0% 0%
+expect-cold-match
+screenshot reflow-back-2x

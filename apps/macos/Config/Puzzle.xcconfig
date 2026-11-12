@@ -1,0 +1,26 @@
+// D-56: normal builds run Puzzle; PUZZLE_ENABLED=NO keeps a library-free host/test build available.
+PUZZLE_ENABLED = YES
+// The standard app links the base terminal API without optional protocols.
+PUZZLE_CARGO_FEATURES = puzzle-ffi/default
+// Cargo writes its private target/cache outside DerivedData; the app's runtime sandbox setting is separate.
+ENABLE_USER_SCRIPT_SANDBOXING = NO
+// Resolve the workspace from this Xcode project's location, never from a developer's absolute path.
+PUZZLE_REPOSITORY_ROOT = $(SRCROOT)/../..
+PUZZLE_HEADER_DIR = $(PUZZLE_REPOSITORY_ROOT)/crates/puzzle-ffi/include
+PUZZLE_STATIC_LIBRARY = $(PUZZLE_REPOSITORY_ROOT)/target/apps-macos/release/libpuzzle_ffi.a
+// C and Swift must agree whether the real Puzzle ABI is available; missing opted-in inputs fail the build.
+PUZZLE_C_ENABLED_NO = 0
+PUZZLE_C_ENABLED_YES = 1
+PUZZLE_SWIFT_ENABLED_NO =
+PUZZLE_SWIFT_ENABLED_YES = PUZZLE_ENABLED
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) PUZZLE_ENABLED=$(PUZZLE_C_ENABLED_$(PUZZLE_ENABLED))
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) $(PUZZLE_SWIFT_ENABLED_$(PUZZLE_ENABLED))
+HEADER_SEARCH_PATHS = $(inherited) "$(PUZZLE_HEADER_DIR)"
+// Static Rust dependencies need their native system libraries; no new package/tool is introduced.
+PUZZLE_LINK_FLAGS_NO =
+PUZZLE_LINK_FLAGS_YES = "$(PUZZLE_STATIC_LIBRARY)" -lc++ -liconv -framework Metal -framework QuartzCore -framework CoreVideo -framework CoreText -framework CoreGraphics -framework AppKit -framework Foundation -framework UserNotifications -framework IOKit -framework IOSurface -framework Security -framework SystemConfiguration
+// The project appends its existing exported-symbols list to this configuration's link flags.
+OTHER_LDFLAGS = $(inherited) $(PUZZLE_LINK_FLAGS_$(PUZZLE_ENABLED))
+
+// Resolve the app identity from its portable project configuration.
+INFOPLIST_FILE = $(SRCROOT)/Config/AppInfo.plist

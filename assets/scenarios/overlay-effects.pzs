@@ -1,0 +1,20 @@
+# Public grid effects: color, opacity, offset, scale, rotation, shear and hidden.
+size 80x22
+dpr 1
+search-terminal
+feed "\e[?25lcolor       BBB\r\n\r\n\r\nopacity     BBB\r\n\r\n\r\noffset      BBB\r\n\r\n\r\nscale       BBB\r\n\r\n\r\nrotation    BBB\r\n\r\n\r\nshear       BBB\r\n\r\n\r\nhidden      BBB"
+overlay effects
+render-terminal
+expect-ink-px 100:10-160:45 2% 70%
+expect-ink-px 100:175-220:235 2% 70%
+expect-ink-px 120:350-200:385 0% 0%
+screenshot effects-1x
+dpr 2
+search-terminal
+feed "\e[?25lcolor       BBB\r\n\r\n\r\nopacity     BBB\r\n\r\n\r\noffset      BBB\r\n\r\n\r\nscale       BBB\r\n\r\n\r\nrotation    BBB\r\n\r\n\r\nshear       BBB\r\n\r\n\r\nhidden      BBB"
+overlay effects
+render-terminal
+expect-ink-px 200:20-320:90 2% 70%
+expect-ink-px 200:350-440:470 2% 70%
+expect-ink-px 240:700-400:770 0% 0%
+screenshot effects-2x

@@ -1,0 +1,3 @@
+# Continuous 80x40 truecolor half-block output through a bounded fake PTY.
+# The command records frame, input, resize, backlog and shutdown timings.
+flood

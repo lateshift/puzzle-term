@@ -1,0 +1,20 @@
+# Real OSC command blocks: exit gutters, duration and hovered output copy.
+size 90x27
+dpr 1
+search-terminal
+overlay blocks
+render-terminal
+expect-ink-px 10:16-720:110 1% 99%
+screenshot blocks-1x
+overlay-hover-block
+render-terminal
+screenshot blocks-hover-1x
+dpr 2
+search-terminal
+overlay blocks
+render-terminal
+expect-ink-px 20:32-1440:220 1% 99%
+screenshot blocks-2x
+overlay-hover-block
+render-terminal
+screenshot blocks-hover-2x

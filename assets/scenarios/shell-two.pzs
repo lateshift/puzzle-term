@@ -1,0 +1,7 @@
+# K1: two distinct arbitrary shell command lines in one headless scenario.
+shell "printf first"
+wait-idle 50ms max 2s
+dump first
+shell "printf second"
+wait-idle 50ms max 2s
+dump second

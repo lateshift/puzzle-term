@@ -1,0 +1,20 @@
+* [33m022a8d1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m M5.5: add Unicode widths resize and reflow
+* [33mad5c921[m M5.4: add SGR OSC DCS replies and bounded controls
+* [33m091f60d[m M5.3: cursor editing scroll regions and mode reports
+* [33m0030e64[m docs: M5 work order adds static preview (M5.5b)
+* [33mc08fe84[m M5.2: bounded parser, print path and reviewed snapshots pending
+* [33m7883237[m M5.1: grid and recycled scrollback model
+* [33m8474728[m docs: M5 work order
+* [33m4106055[m docs: record M4 shaping budget verification
+* [33m78fd569[m M4: reuse row layout buffers and enforce shaping budgets
+* [33m0551d3e[m docs: record M4 repair verification
+* [33m7730fcf[m M4: references (pending review)
+* [33mb459f16[m M4: repair builtin joins and measure shaping paths
+* [33mad119ca[m docs: record M4 final verification
+* [33m07f2910[m M4: references (pending review)
+* [33meb5023c[m M4: cover 2x font styles and fallback scenes
+* [33m7e5d0ba[m M4: fit fallback ink without moving grid cells
+* [33mc23f049[m M4: references (pending review)
+* [33maff2ff0[m M4: measure and accept fonts, hinting, and text scenes
+* [33m300ab09[m M4: references (pending review)
+* [33m83bec14[m M4: hint untransformed specimen and extend text scene

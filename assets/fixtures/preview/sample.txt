@@ -1,0 +1,11 @@
+Puzzle Terminal static preview
+
+This neutral file is opened by Vim inside a recorded PTY session.
+The fixture shows an alternate screen, cursor movement and status text.
+No personal path, user name or host name is part of this sample.
+
+Box drawing:  ┌────┬─────┐
+              │left│right│
+              └────┴─────┘
+
+Color and text come from the recorded application output.

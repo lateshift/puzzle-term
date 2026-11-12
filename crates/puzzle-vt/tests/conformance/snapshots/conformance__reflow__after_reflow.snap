@@ -1,0 +1,8 @@
+---
+source: crates/puzzle-vt/tests/conformance/reflow.rs
+expression: grid_dump(&term)
+---
+W |abcd·|
+- |界·gh·|
+W |12345|
+- |678··|

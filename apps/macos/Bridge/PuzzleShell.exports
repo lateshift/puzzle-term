@@ -1,0 +1,28 @@
+# Keep the C entry points visible even when the Release linker strips unused Swift code.
+# Mach-O external symbol names add an underscore to the C names in PuzzleShell.h.
+_puzzle_shell_abi_version
+_puzzle_shell_set_event_callback
+_puzzle_shell_create_window
+_puzzle_shell_create_tab
+_puzzle_shell_select_tab
+_puzzle_shell_close_tab
+_puzzle_shell_close_window
+_puzzle_shell_move_tab_to_new_window
+_puzzle_shell_set_tab_title
+_puzzle_shell_set_placeholder_visible
+_puzzle_shell_set_ime_cursor_rect
+_puzzle_shell_move_tab
+_puzzle_shell_set_tab_custom_name
+_puzzle_shell_get_tab_title
+_puzzle_shell_set_tab_color
+_puzzle_shell_get_tab_color
+_puzzle_shell_collect_tabs
+_puzzle_shell_split_tab
+_puzzle_shell_select_pane
+_puzzle_shell_close_pane
+_puzzle_shell_get_active_pane
+_puzzle_shell_get_pane_ids
+_puzzle_shell_get_splits
+_puzzle_shell_resize_split
+_puzzle_shell_set_pane_placeholder_visible
+_puzzle_shell_set_pane_ime_cursor_rect

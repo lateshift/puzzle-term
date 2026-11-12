@@ -1,0 +1,3 @@
+# M8.4: every selection kind, optional foreground and both hinting paths.
+# The fixture checks exact cells, outside pixels and unchanged glyph-row caches.
+selection-scenes

@@ -1,0 +1,135 @@
+# M3 Slug scenes: the GPU reads packed synthetic and real-font atlas data.
+# The corner check catches an incorrect clear; the ink range rejects blank
+# output and a solidly filled quad before golden comparison runs.
+slug-scene small
+screenshot small
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-44:44 1% 50%
+slug-scene large
+screenshot large
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-248:248 1% 50%
+slug-scene glyph
+screenshot glyph
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-48:48 1% 50%
+slug-scene glyph-large
+screenshot glyph-large
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-248:248 1% 50%
+slug-scene rotated
+screenshot rotated
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-88:88 1% 50%
+slug-scene sheared
+screenshot sheared
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-112:112 1% 50%
+slug-scene zoomed
+screenshot zoomed
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-128:128 1% 50%
+slug-scene specimen-6-1x
+screenshot specimen-6-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-189:54 1% 50%
+slug-scene specimen-6-2x
+screenshot specimen-6-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-328:61 1% 50%
+slug-scene specimen-8-1x
+screenshot specimen-8-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-235:58 1% 50%
+slug-scene specimen-8-2x
+screenshot specimen-8-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-421:65 1% 50%
+slug-scene specimen-10-1x
+screenshot specimen-10-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-282:59 1% 50%
+slug-scene specimen-10-2x
+screenshot specimen-10-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-514:69 1% 50%
+slug-scene specimen-12-1x
+screenshot specimen-12-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-328:61 1% 50%
+slug-scene specimen-12-2x
+screenshot specimen-12-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-606:73 1% 50%
+slug-scene specimen-14-1x
+screenshot specimen-14-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-374:63 1% 50%
+slug-scene specimen-14-2x
+screenshot specimen-14-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-699:78 1% 50%
+slug-scene specimen-16-1x
+screenshot specimen-16-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-421:65 1% 50%
+slug-scene specimen-16-2x
+screenshot specimen-16-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-793:81 1% 50%
+slug-scene specimen-24-1x
+screenshot specimen-24-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-606:73 1% 50%
+slug-scene specimen-24-2x
+screenshot specimen-24-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-1163:97 1% 50%
+slug-scene specimen-48-1x
+screenshot specimen-48-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-1163:97 1% 50%
+slug-scene specimen-48-2x
+screenshot specimen-48-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-2279:146 1% 50%
+slug-scene specimen-96-1x
+screenshot specimen-96-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-2279:145 1% 50%
+slug-scene specimen-96-2x
+screenshot specimen-96-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-4508:243 1% 50%
+slug-scene specimen-rot15-24-1x
+screenshot specimen-rot15-24-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-590:207 1% 50%
+slug-scene specimen-rot15-24-2x
+screenshot specimen-rot15-24-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-1131:363 1% 50%
+slug-scene specimen-rot90-24-1x
+screenshot specimen-rot90-24-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-73:606 1% 50%
+slug-scene specimen-rot90-24-2x
+screenshot specimen-rot90-24-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-97:1163 1% 50%
+slug-scene specimen-shear12-24-1x
+screenshot specimen-shear12-24-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-608:73 1% 50%
+slug-scene specimen-shear12-24-2x
+screenshot specimen-shear12-24-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-1168:97 1% 50%
+slug-scene specimen-zoom4-24-1x
+screenshot specimen-zoom4-24-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-2279:146 1% 50%
+slug-scene specimen-zoom4-24-2x
+screenshot specimen-zoom4-24-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-4508:243 1% 50%

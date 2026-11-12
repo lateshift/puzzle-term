@@ -1,0 +1,3 @@
+# Authored raw/PNG images, all three z layers, crop, viewport clipping and reflow.
+# image-scenes performs independent pixel/geometry and deletion/reupload assertions.
+image-scenes

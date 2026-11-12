@@ -1,0 +1,4 @@
+{
+  "triangle-down": { "font": "assets/fonts/SymbolsNerdFontMono-Regular.ttf", "codepoint": "EB6E" },
+  "triangle-right": { "font": "assets/fonts/SymbolsNerdFontMono-Regular.ttf", "codepoint": "EB70" }
+}

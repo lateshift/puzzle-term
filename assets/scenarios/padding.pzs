@@ -1,0 +1,12 @@
+# M6 padding and partial-cell strip use Puzzle's default background.
+# The 7×5 extra backing pixels mimic a window between whole-cell sizes.
+terminal 32x8
+surface-extra 7x5
+feed "Puzzle padding\e[41m RED \e[0m"
+render-terminal
+expect-text 0 "Puzzle padding RED"
+expect-pixel 0 0 #0e121a 0
+expect-pixel 280 80 #0e121a 0
+expect-pixel 294 188 #0e121a 0
+expect-ink 0:0-1:18 1% 50%
+screenshot padding

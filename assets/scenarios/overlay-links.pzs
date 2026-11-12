@@ -1,0 +1,22 @@
+# Grouped link underline and a finite tooltip from the real pointer model.
+size 90x27
+dpr 1
+search-terminal
+overlay links
+render-terminal
+overlay-hover-link
+render-terminal
+advance-ms 510
+render-terminal
+expect-ink-px 16:16-220:90 1% 99%
+screenshot links-1x
+dpr 2
+search-terminal
+overlay links
+render-terminal
+overlay-hover-link
+render-terminal
+advance-ms 510
+render-terminal
+expect-ink-px 32:32-440:180 1% 99%
+screenshot links-2x

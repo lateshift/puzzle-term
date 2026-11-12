@@ -1,0 +1,34 @@
+# Click the real, presented command button; feedback is core UI in every host.
+size 90x27
+dpr 1
+search-terminal
+overlay blocks
+render-terminal
+overlay-hover-block
+render-terminal
+overlay-copy-block
+render-terminal
+expect-ink-px 10:16-720:110 1% 99%
+screenshot copied-1x
+advance-ms 220
+render-terminal
+screenshot copied-label-1x
+advance-ms 1300
+render-terminal
+screenshot reverted-1x
+dpr 2
+search-terminal
+overlay blocks
+render-terminal
+overlay-hover-block
+render-terminal
+overlay-copy-block
+render-terminal
+expect-ink-px 20:32-1440:220 1% 99%
+screenshot copied-2x
+advance-ms 220
+render-terminal
+screenshot copied-label-2x
+advance-ms 1300
+render-terminal
+screenshot reverted-2x

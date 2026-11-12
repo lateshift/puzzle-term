@@ -1,0 +1,16 @@
+# Public providers paint a cell behind text and a panel into Top-slot padding.
+size 20x5
+dpr 1
+search-terminal
+feed "Grid and overlay"
+overlay core
+render-terminal
+screenshot core-1x
+expect-pixel 12 12 #4488cc 0
+dpr 2
+search-terminal
+feed "Grid and overlay"
+overlay core
+render-terminal
+screenshot core-2x
+expect-pixel 24 24 #4488cc 0

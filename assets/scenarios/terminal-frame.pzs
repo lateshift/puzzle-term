@@ -1,0 +1,48 @@
+# M6.3 retained frame contract: RGB/indexed colors, every underline style,
+# cursor geometry, wide cells and joining box glyphs use real VT rows.
+terminal 32x8
+feed "\e[41m    \e[0m \e[38;2;50;200;100mRGB\e[0m \e[7m inverse \e[0m\r\n"
+feed "\e[4:1mone\e[0m \e[4:2mtwo\e[0m \e[4:3;58:2::255:0:0mcurly\e[0m\r\n"
+feed "\e[4:4mdotted\e[0m \e[4:5mdashed\e[0m \e[9mstrike\e[0m \e[53mover\e[0m\r\n"
+expect-text 0 "     RGB  inverse"
+expect-text 1 "one two curly"
+expect-text 2 "dotted dashed strike over"
+render-terminal
+expect-pixel 0 0 #0e121a 0
+expect-pixel 24 24 #cd0000 0
+expect-ink 0:0-6:32 1% 80%
+screenshot colors-decorations
+dump colors-decorations
+feed "\e[4;1HAB\e[4;2H\e[2 q"
+render-terminal
+expect-ink 3:0-7:8 1% 80%
+# The block fills the ASCII B cell and recolors its ink instead of hiding it.
+expect-pixel 24 73 #e5e5e5 0
+expect-pixel 25 78 #4e5156 0
+screenshot block-ascii-cursor
+feed "\e[6 q"
+render-terminal
+expect-ink 3:0-7:8 1% 80%
+# A bar occupies the cell's leftmost device-pixel column only.
+expect-pixel 24 73 #e5e5e5 0
+expect-pixel 28 80 #0e121a 0
+screenshot bar-cursor
+feed "\e[4 q"
+render-terminal
+expect-ink 3:0-7:8 1% 80%
+# The underline occupies the bottom row, leaving the top background clear.
+expect-pixel 28 91 #e5e5e5 0
+expect-pixel 24 73 #0e121a 0
+screenshot underline-cursor
+feed "\e[5;1H界\e[5;1H\e[2 q"
+render-terminal
+expect-ink 4:0-7:8 1% 80%
+# The two-cell cursor remains in the suite even without a bundled CJK face.
+expect-pixel 23 99 #e5e5e5 0
+expect-pixel 24 99 #e5e5e5 0
+screenshot block-wide-cursor
+feed "\e[6;1H╭────╮\r\n│BOX │\r\n╰────╯"
+render-terminal
+expect-text 5 "╭────╮"
+expect-ink 5:0-8:10 1% 80%
+screenshot wide-box

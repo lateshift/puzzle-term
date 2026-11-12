@@ -1,0 +1,27 @@
+[package]
+name = "puzzle-vt"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+bitflags.workspace = true
+smallvec.workspace = true
+unicode-width.workspace = true
+unicode-segmentation.workspace = true
+vte.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+allocation-counter.workspace = true
+proptest.workspace = true
+insta.workspace = true
+divan.workspace = true
+
+[[bench]]
+name = "reflow"
+harness = false

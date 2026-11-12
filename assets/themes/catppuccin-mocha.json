@@ -1,0 +1,33 @@
+{
+  "name": "catppuccin-mocha",
+  "displayName": "Catppuccin Mocha",
+  "appearance": "dark",
+  "credit": "catppuccin/kitty @ 43098316202b84d6a71f71aaf8360f102f4d3f1a (MIT)",
+  "source": "https://github.com/catppuccin/kitty/blob/43098316202b84d6a71f71aaf8360f102f4d3f1a/themes/mocha.conf",
+  "license": "MIT",
+  "licenseSource": "https://github.com/catppuccin/kitty/blob/43098316202b84d6a71f71aaf8360f102f4d3f1a/LICENSE",
+  "foreground": "#cdd6f4",
+  "background": "#1e1e2e",
+  "cursor": "#f5e0dc",
+  "cursorText": "#1e1e2e",
+  "selectionBackground": "#f5e0dc",
+  "selectionForeground": "#1e1e2e",
+  "palette": [
+    "#45475a",
+    "#f38ba8",
+    "#a6e3a1",
+    "#f9e2af",
+    "#89b4fa",
+    "#f5c2e7",
+    "#94e2d5",
+    "#bac2de",
+    "#585b70",
+    "#f38ba8",
+    "#a6e3a1",
+    "#f9e2af",
+    "#89b4fa",
+    "#f5c2e7",
+    "#94e2d5",
+    "#a6adc8"
+  ]
+}

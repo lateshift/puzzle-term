@@ -1,0 +1,32 @@
+{
+  "name": "puzzle-high-contrast-dark",
+  "displayName": "Puzzle High Contrast Dark",
+  "appearance": "dark",
+  "credit": "Puzzle Terminal original palette (MIT)",
+  "source": "Puzzle Terminal",
+  "license": "MIT",
+  "foreground": "#ffffff",
+  "background": "#000000",
+  "cursor": "#ffffff",
+  "cursorText": "#000000",
+  "selectionBackground": "#4c4c4c",
+  "selectionForeground": "#ffffff",
+  "palette": [
+    "#202020",
+    "#ff7070",
+    "#8aff80",
+    "#ffe37a",
+    "#8abaff",
+    "#f3a0ff",
+    "#7de5ed",
+    "#dedede",
+    "#727272",
+    "#ff9696",
+    "#b3ffad",
+    "#fff2aa",
+    "#b2d1ff",
+    "#f8c6ff",
+    "#aeffff",
+    "#ffffff"
+  ]
+}

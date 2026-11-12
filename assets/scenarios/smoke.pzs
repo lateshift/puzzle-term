@@ -1,0 +1,6 @@
+# M0 clear pass: check the same background used by the browser shell.
+size 80x24
+screenshot clear
+dump empty
+expect-pixel 12 40 #0e121a 1
+expect-pixel 600 300 #0e121a 1

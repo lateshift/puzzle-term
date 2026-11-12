@@ -1,0 +1,61 @@
+# Direct crates approved in design §2.6; internal puzzle-* and xtask are checked separately.
+wgpu
+bytemuck
+wasm-bindgen
+js-sys
+web-sys
+wasm-bindgen-futures
+web-time
+console_error_panic_hook
+skrifa
+harfrust
+unicode-segmentation
+unicode-width
+fontique
+kurbo
+vte
+tracing
+tracing-subscriber
+tracing-web
+thiserror
+rustc-hash
+smallvec
+bitflags
+serde_json
+proptest
+allocation-counter
+insta
+divan
+wasm-bindgen-test
+winit
+portable-pty
+filedescriptor
+arboard
+tokio
+tokio-tungstenite
+getrandom
+futures-util
+png
+rustix
+
+# D-53: minimal macOS display-link bindings, puzzle-sys only.
+objc2-core-graphics
+objc2-core-video
+objc2-quartz-core
+# User 2026-10-10: native image-worker zlib expansion, puzzle-embed only.
+flate2
+
+# R4 2026-10-11: harness-only NSPasteboard revision tracking.
+objc2-app-kit
+
+# R4 2026-10-13: isolated fuzz workspace only; never shipped or in wasm.
+libfuzzer-sys
+arbitrary
+
+
+# User R4/D-60 2026-10-17: minimal macOS-only IOSurface presentation bindings.
+objc2
+block2
+objc2-metal
+objc2-io-surface
+objc2-core-foundation

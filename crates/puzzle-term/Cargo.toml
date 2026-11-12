@@ -1,0 +1,34 @@
+[package]
+name = "puzzle-term"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[features]
+# Deterministic milestone fixtures are excluded from shipped wasm by default.
+test-scenes = []
+
+[dependencies]
+puzzle-bus = { path = "../puzzle-bus" }
+puzzle-overlay = { path = "../puzzle-overlay" }
+puzzle-frame = { path = "../puzzle-frame" }
+puzzle-slug = { path = "../puzzle-slug" }
+puzzle-text = { path = "../puzzle-text" }
+puzzle-vt = { path = "../puzzle-vt" }
+web-time.workspace = true
+tracing.workspace = true
+thiserror.workspace = true
+kurbo.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+allocation-counter.workspace = true
+
+[[example]]
+name = "search_bench"
+# Deterministic fixtures stay out of ordinary engine builds.
+required-features = ["test-scenes"]

@@ -1,0 +1,61 @@
+# K4: real nvim on a generated neutral numbered file (skip if nvim absent).
+shell "seq 1 240 > target/k4-nvim-lines.txt; exec nvim --clean -n -c 'normal! 100G' target/k4-nvim-lines.txt"
+wait-idle 100ms max 5s
+render-shell
+dump-drawn initial
+input ctrl+d
+wait-idle 50ms max 5s
+expect-pty-key ctrl+d
+render-shell
+expect-drawn-row-changed 0
+expect-drawn-not 29:60-29:99 "^"
+expect-cold-match
+input ctrl+u
+wait-idle 50ms max 5s
+expect-pty-key ctrl+u
+render-shell
+expect-drawn-row-changed 0
+expect-drawn-not 29:60-29:99 "^"
+expect-cold-match
+input ctrl+e
+wait-idle 50ms max 5s
+expect-pty-key ctrl+e
+render-shell
+expect-drawn-row-changed 0
+expect-drawn-not 29:60-29:99 "^"
+expect-cold-match
+input ctrl+y
+wait-idle 50ms max 5s
+expect-pty-key ctrl+y
+render-shell
+expect-drawn-row-changed 0
+expect-drawn-not 29:60-29:99 "^"
+expect-cold-match
+input ctrl+f
+wait-idle 50ms max 5s
+expect-pty-key ctrl+f
+render-shell
+expect-drawn-row-changed 0
+expect-drawn-not 29:60-29:99 "^"
+expect-cold-match
+input ctrl+b
+wait-idle 50ms max 5s
+expect-pty-key ctrl+b
+render-shell
+expect-drawn-row-changed 0
+expect-drawn-not 29:60-29:99 "^"
+expect-cold-match
+input ctrl+a
+wait-idle 50ms max 5s
+expect-pty-key ctrl+a
+render-shell
+expect-drawn-any-row-changed
+expect-drawn-not 29:60-29:99 "^"
+expect-cold-match
+input ctrl+x
+wait-idle 50ms max 5s
+expect-pty-key ctrl+x
+render-shell
+expect-drawn-any-row-changed
+expect-drawn-not 29:60-29:99 "^"
+expect-cold-match

@@ -1,0 +1,1098 @@
+# K4: macOS-shaped Ctrl letters across legacy and kitty modes.
+# Each key has a quiet boundary before asserting transport bytes and GPU pixels.
+shell "stty raw -echo; exec <bin> keyecho --kitty 0"
+wait-idle 40ms max 2s
+input ctrl+a
+wait-idle 20ms max 2s
+expect-pty-key ctrl+a
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+
+input ctrl+b
+wait-idle 20ms max 2s
+expect-pty-key ctrl+b
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+c
+wait-idle 20ms max 2s
+expect-pty-key ctrl+c
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+d
+wait-idle 20ms max 2s
+expect-pty-key ctrl+d
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+e
+wait-idle 20ms max 2s
+expect-pty-key ctrl+e
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+f
+wait-idle 20ms max 2s
+expect-pty-key ctrl+f
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+g
+wait-idle 20ms max 2s
+expect-pty-key ctrl+g
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+h
+wait-idle 20ms max 2s
+expect-pty-key ctrl+h
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+i
+wait-idle 20ms max 2s
+expect-pty-key ctrl+i
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+j
+wait-idle 20ms max 2s
+expect-pty-key ctrl+j
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+k
+wait-idle 20ms max 2s
+expect-pty-key ctrl+k
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+l
+wait-idle 20ms max 2s
+expect-pty-key ctrl+l
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+m
+wait-idle 20ms max 2s
+expect-pty-key ctrl+m
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+n
+wait-idle 20ms max 2s
+expect-pty-key ctrl+n
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+o
+wait-idle 20ms max 2s
+expect-pty-key ctrl+o
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+p
+wait-idle 20ms max 2s
+expect-pty-key ctrl+p
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+q
+wait-idle 20ms max 2s
+expect-pty-key ctrl+q
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+r
+wait-idle 20ms max 2s
+expect-pty-key ctrl+r
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+s
+wait-idle 20ms max 2s
+expect-pty-key ctrl+s
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+t
+wait-idle 20ms max 2s
+expect-pty-key ctrl+t
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+u
+wait-idle 20ms max 2s
+expect-pty-key ctrl+u
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+v
+wait-idle 20ms max 2s
+expect-pty-key ctrl+v
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+w
+wait-idle 20ms max 2s
+expect-pty-key ctrl+w
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+x
+wait-idle 20ms max 2s
+expect-pty-key ctrl+x
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+y
+wait-idle 20ms max 2s
+expect-pty-key ctrl+y
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+z
+wait-idle 20ms max 2s
+expect-pty-key ctrl+z
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+shift+d
+wait-idle 20ms max 2s
+expect-pty-key ctrl+shift+d
+render-shell
+expect-drawn 28 "flags=0 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+shell "stty raw -echo; exec <bin> keyecho --kitty 1"
+wait-idle 40ms max 2s
+input ctrl+a
+wait-idle 20ms max 2s
+expect-pty-key ctrl+a
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+b
+wait-idle 20ms max 2s
+expect-pty-key ctrl+b
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+c
+wait-idle 20ms max 2s
+expect-pty-key ctrl+c
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+d
+wait-idle 20ms max 2s
+expect-pty-key ctrl+d
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+e
+wait-idle 20ms max 2s
+expect-pty-key ctrl+e
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+f
+wait-idle 20ms max 2s
+expect-pty-key ctrl+f
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+g
+wait-idle 20ms max 2s
+expect-pty-key ctrl+g
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+h
+wait-idle 20ms max 2s
+expect-pty-key ctrl+h
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+i
+wait-idle 20ms max 2s
+expect-pty-key ctrl+i
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+j
+wait-idle 20ms max 2s
+expect-pty-key ctrl+j
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+k
+wait-idle 20ms max 2s
+expect-pty-key ctrl+k
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+l
+wait-idle 20ms max 2s
+expect-pty-key ctrl+l
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+m
+wait-idle 20ms max 2s
+expect-pty-key ctrl+m
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+n
+wait-idle 20ms max 2s
+expect-pty-key ctrl+n
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+o
+wait-idle 20ms max 2s
+expect-pty-key ctrl+o
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+p
+wait-idle 20ms max 2s
+expect-pty-key ctrl+p
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+q
+wait-idle 20ms max 2s
+expect-pty-key ctrl+q
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+r
+wait-idle 20ms max 2s
+expect-pty-key ctrl+r
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+s
+wait-idle 20ms max 2s
+expect-pty-key ctrl+s
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+t
+wait-idle 20ms max 2s
+expect-pty-key ctrl+t
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+u
+wait-idle 20ms max 2s
+expect-pty-key ctrl+u
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+v
+wait-idle 20ms max 2s
+expect-pty-key ctrl+v
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+w
+wait-idle 20ms max 2s
+expect-pty-key ctrl+w
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+x
+wait-idle 20ms max 2s
+expect-pty-key ctrl+x
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+y
+wait-idle 20ms max 2s
+expect-pty-key ctrl+y
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+z
+wait-idle 20ms max 2s
+expect-pty-key ctrl+z
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+shift+d
+wait-idle 20ms max 2s
+expect-pty-key ctrl+shift+d
+render-shell
+expect-drawn 28 "flags=1 last=ctrl+shift"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+shell "stty raw -echo; exec <bin> keyecho --kitty 3"
+wait-idle 40ms max 2s
+input ctrl+a
+wait-idle 20ms max 2s
+expect-pty-key ctrl+a
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+b
+wait-idle 20ms max 2s
+expect-pty-key ctrl+b
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+c
+wait-idle 20ms max 2s
+expect-pty-key ctrl+c
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+d
+wait-idle 20ms max 2s
+expect-pty-key ctrl+d
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+e
+wait-idle 20ms max 2s
+expect-pty-key ctrl+e
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+f
+wait-idle 20ms max 2s
+expect-pty-key ctrl+f
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+g
+wait-idle 20ms max 2s
+expect-pty-key ctrl+g
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+h
+wait-idle 20ms max 2s
+expect-pty-key ctrl+h
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+i
+wait-idle 20ms max 2s
+expect-pty-key ctrl+i
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+j
+wait-idle 20ms max 2s
+expect-pty-key ctrl+j
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+k
+wait-idle 20ms max 2s
+expect-pty-key ctrl+k
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+l
+wait-idle 20ms max 2s
+expect-pty-key ctrl+l
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+m
+wait-idle 20ms max 2s
+expect-pty-key ctrl+m
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+n
+wait-idle 20ms max 2s
+expect-pty-key ctrl+n
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+o
+wait-idle 20ms max 2s
+expect-pty-key ctrl+o
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+p
+wait-idle 20ms max 2s
+expect-pty-key ctrl+p
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+q
+wait-idle 20ms max 2s
+expect-pty-key ctrl+q
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+r
+wait-idle 20ms max 2s
+expect-pty-key ctrl+r
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+s
+wait-idle 20ms max 2s
+expect-pty-key ctrl+s
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+t
+wait-idle 20ms max 2s
+expect-pty-key ctrl+t
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+u
+wait-idle 20ms max 2s
+expect-pty-key ctrl+u
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+v
+wait-idle 20ms max 2s
+expect-pty-key ctrl+v
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+w
+wait-idle 20ms max 2s
+expect-pty-key ctrl+w
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+x
+wait-idle 20ms max 2s
+expect-pty-key ctrl+x
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+y
+wait-idle 20ms max 2s
+expect-pty-key ctrl+y
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+z
+wait-idle 20ms max 2s
+expect-pty-key ctrl+z
+render-shell
+expect-drawn 28 "flags=3 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+shift+d
+wait-idle 20ms max 2s
+expect-pty-key ctrl+shift+d
+render-shell
+expect-drawn 28 "flags=3 last=ctrl+shift"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+shell "stty raw -echo; exec <bin> keyecho --kitty 31"
+wait-idle 40ms max 2s
+input ctrl+a
+wait-idle 20ms max 2s
+expect-pty-key ctrl+a
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+b
+wait-idle 20ms max 2s
+expect-pty-key ctrl+b
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+c
+wait-idle 20ms max 2s
+expect-pty-key ctrl+c
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+d
+wait-idle 20ms max 2s
+expect-pty-key ctrl+d
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+e
+wait-idle 20ms max 2s
+expect-pty-key ctrl+e
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+f
+wait-idle 20ms max 2s
+expect-pty-key ctrl+f
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+g
+wait-idle 20ms max 2s
+expect-pty-key ctrl+g
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+h
+wait-idle 20ms max 2s
+expect-pty-key ctrl+h
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+i
+wait-idle 20ms max 2s
+expect-pty-key ctrl+i
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+j
+wait-idle 20ms max 2s
+expect-pty-key ctrl+j
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+k
+wait-idle 20ms max 2s
+expect-pty-key ctrl+k
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+l
+wait-idle 20ms max 2s
+expect-pty-key ctrl+l
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+m
+wait-idle 20ms max 2s
+expect-pty-key ctrl+m
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+n
+wait-idle 20ms max 2s
+expect-pty-key ctrl+n
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+o
+wait-idle 20ms max 2s
+expect-pty-key ctrl+o
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+p
+wait-idle 20ms max 2s
+expect-pty-key ctrl+p
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+q
+wait-idle 20ms max 2s
+expect-pty-key ctrl+q
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+r
+wait-idle 20ms max 2s
+expect-pty-key ctrl+r
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+s
+wait-idle 20ms max 2s
+expect-pty-key ctrl+s
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+t
+wait-idle 20ms max 2s
+expect-pty-key ctrl+t
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+u
+wait-idle 20ms max 2s
+expect-pty-key ctrl+u
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+v
+wait-idle 20ms max 2s
+expect-pty-key ctrl+v
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+w
+wait-idle 20ms max 2s
+expect-pty-key ctrl+w
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+x
+wait-idle 20ms max 2s
+expect-pty-key ctrl+x
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+y
+wait-idle 20ms max 2s
+expect-pty-key ctrl+y
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+z
+wait-idle 20ms max 2s
+expect-pty-key ctrl+z
+render-shell
+expect-drawn 28 "flags=31 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+input ctrl+shift+d
+wait-idle 20ms max 2s
+expect-pty-key ctrl+shift+d
+render-shell
+expect-drawn 28 "flags=31 last=ctrl+shift"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-not 0:0-29:99 "RAW:"
+expect-drawn-grid
+expect-cold-match
+
+# K5b: measured editor erase gaps cross the same real PTY and GPU path.
+shell "stty raw -echo; exec <bin> keyecho --kitty 1 --gap 2"
+wait-idle 40ms max 2s
+input ctrl+d
+wait-idle 20ms max 2s
+expect-paced-no-marker 2
+expect-pty-key ctrl+d
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-grid
+expect-cold-match
+input ctrl+u
+wait-idle 20ms max 2s
+expect-paced-no-marker 2
+expect-pty-key ctrl+u
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-grid
+expect-cold-match
+input ctrl+x
+wait-idle 20ms max 2s
+expect-paced-no-marker 2
+expect-pty-key ctrl+x
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-grid
+expect-cold-match
+shell "stty raw -echo; exec <bin> keyecho --kitty 1 --gap 5"
+wait-idle 40ms max 2s
+input ctrl+d
+wait-idle 20ms max 2s
+expect-paced-no-marker 5
+expect-pty-key ctrl+d
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-grid
+expect-cold-match
+input ctrl+u
+wait-idle 20ms max 2s
+expect-paced-no-marker 5
+expect-pty-key ctrl+u
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-grid
+expect-cold-match
+input ctrl+x
+wait-idle 20ms max 2s
+expect-paced-no-marker 5
+expect-pty-key ctrl+x
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-grid
+expect-cold-match
+shell "stty raw -echo; exec <bin> keyecho --kitty 1 --gap 7"
+wait-idle 40ms max 2s
+input ctrl+d
+wait-idle 20ms max 2s
+expect-paced-no-marker 7
+expect-pty-key ctrl+d
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-grid
+expect-cold-match
+input ctrl+u
+wait-idle 20ms max 2s
+expect-paced-no-marker 7
+expect-pty-key ctrl+u
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-grid
+expect-cold-match
+input ctrl+x
+wait-idle 20ms max 2s
+expect-paced-no-marker 7
+expect-pty-key ctrl+x
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-grid
+expect-cold-match
+
+# K5c: one Ctrl+D starts a two-second 33-ms repeat stream in the child.
+# Captured PTY groups are replayed at every refresh phase, not merely checked
+# in their final erased state; each hold must present settled frames.
+shell "stty raw -echo; exec <bin> keyecho --kitty 1 --gap 2 --repeat-ms 33"
+wait-idle 40ms max 2s
+input ctrl+d
+wait-idle 40ms max 4s
+expect-paced-repeat-no-marker 2
+expect-pty-key ctrl+d
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-grid
+expect-cold-match
+shell "stty raw -echo; exec <bin> keyecho --kitty 1 --gap 5 --repeat-ms 33"
+wait-idle 40ms max 2s
+input ctrl+d
+wait-idle 40ms max 4s
+expect-paced-repeat-no-marker 5
+expect-pty-key ctrl+d
+render-shell
+expect-drawn 28 "flags=1 last=ctrl"
+expect-drawn-not 29:69-29:79 "^"
+expect-drawn-grid
+expect-cold-match

@@ -1,0 +1,45 @@
+# M17.text-quality / M9.7: D-27 hinted 1x and unhinted 2x grid placements.
+# White on black, native blending, no thickening; no policy changes.
+# Review candidates only: compare at native pixels, never rescale.
+dpr 1
+render-text 16 16 10 "Hamburgefonstiv 0Oo1lI {}[] -> => != == EEFH Ttfi _-=+" ligatures=off
+screenshot text-10px-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-356:46 0.1% 70%
+render-text 16 16 11 "Hamburgefonstiv 0Oo1lI {}[] -> => != == EEFH Ttfi _-=+" ligatures=off
+screenshot text-11px-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-410:47 0.1% 70%
+render-text 16 16 12 "Hamburgefonstiv 0Oo1lI {}[] -> => != == EEFH Ttfi _-=+" ligatures=off
+screenshot text-12px-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-410:48 0.1% 70%
+render-text 16 16 13 "Hamburgefonstiv 0Oo1lI {}[] -> => != == EEFH Ttfi _-=+" ligatures=off
+screenshot text-13px-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-464:50 0.1% 70%
+render-text 16 16 14 "Hamburgefonstiv 0Oo1lI {}[] -> => != == EEFH Ttfi _-=+" ligatures=off
+screenshot text-14px-1x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-464:51 0.1% 70%
+dpr 2
+render-text 32 32 10 "Hamburgefonstiv 0Oo1lI {}[] -> => != == EEFH Ttfi _-=+" ligatures=off
+screenshot text-10px-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-696:76 0.1% 70%
+render-text 32 32 11 "Hamburgefonstiv 0Oo1lI {}[] -> => != == EEFH Ttfi _-=+" ligatures=off
+screenshot text-11px-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-750:77 0.1% 70%
+render-text 32 32 12 "Hamburgefonstiv 0Oo1lI {}[] -> => != == EEFH Ttfi _-=+" ligatures=off
+screenshot text-12px-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-858:81 0.1% 70%
+render-text 32 32 13 "Hamburgefonstiv 0Oo1lI {}[] -> => != == EEFH Ttfi _-=+" ligatures=off
+screenshot text-13px-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-912:83 0.1% 70%
+render-text 32 32 14 "Hamburgefonstiv 0Oo1lI {}[] -> => != == EEFH Ttfi _-=+" ligatures=off
+screenshot text-14px-2x
+expect-pixel 0 0 #000000 0
+expect-ink-px 0:0-912:85 0.1% 70%

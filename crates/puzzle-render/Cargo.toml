@@ -1,0 +1,22 @@
+[package]
+name = "puzzle-render"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[features]
+# Native oracle tests expose interpolated shader inputs without shipping the
+# diagnostic fragment entry point in the browser package.
+oracle-debug = []
+
+[dependencies]
+wgpu.workspace = true
+bytemuck.workspace = true
+puzzle-frame = { path = "../puzzle-frame" }
+puzzle-slug = { path = "../puzzle-slug" }
+tracing.workspace = true
+thiserror.workspace = true
+
+[lints]
+workspace = true

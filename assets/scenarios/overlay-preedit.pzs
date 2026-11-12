@@ -1,0 +1,14 @@
+# M9.5: candidate replaces suggestion, with its measured underline.
+size 90x27
+dpr 1
+search-terminal
+overlay preedit
+render-terminal
+expect-ink-px 48:55-240:80 1% 50%
+screenshot preedit-1x
+dpr 2
+search-terminal
+overlay preedit
+render-terminal
+expect-ink-px 96:110-480:160 1% 50%
+screenshot preedit-2x

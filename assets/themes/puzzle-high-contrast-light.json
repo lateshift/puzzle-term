@@ -1,0 +1,32 @@
+{
+  "name": "puzzle-high-contrast-light",
+  "displayName": "Puzzle High Contrast Light",
+  "appearance": "light",
+  "credit": "Puzzle Terminal original palette (MIT)",
+  "source": "Puzzle Terminal",
+  "license": "MIT",
+  "foreground": "#000000",
+  "background": "#ffffff",
+  "cursor": "#000000",
+  "cursorText": "#ffffff",
+  "selectionBackground": "#b5d0f0",
+  "selectionForeground": "#000000",
+  "palette": [
+    "#000000",
+    "#9d0020",
+    "#176319",
+    "#715000",
+    "#003c9e",
+    "#781177",
+    "#005c66",
+    "#454545",
+    "#424242",
+    "#8d0015",
+    "#0f5210",
+    "#604200",
+    "#003181",
+    "#620b61",
+    "#004c55",
+    "#f5f5f5"
+  ]
+}

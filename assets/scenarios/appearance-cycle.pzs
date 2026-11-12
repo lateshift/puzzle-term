@@ -1,0 +1,4 @@
+# M6 live Session path: both start modes, both cursor policies and 0/150 ms.
+# Each platform-origin appearance switch renders a midpoint and/or endpoint;
+# the command asserts exact GPU cursor and background pixels at each sample.
+appearance-cycle

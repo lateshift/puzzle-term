@@ -1,0 +1,6 @@
+# Xcode's generated build products and per-user IDE preferences are not source artifacts.
+.DS_Store
+DerivedData/
+build/
+xcuserdata/
+*.xcuserstate

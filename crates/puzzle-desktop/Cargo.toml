@@ -1,0 +1,45 @@
+[package]
+name = "puzzle-desktop"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+# Regression probes opt into explicitly unsupported diagnostics; live UI uses App/Surface.
+puzzle-embed = { path = "../puzzle-embed", features = ["test-support"] }
+puzzle-render = { path = "../puzzle-render", features = ["oracle-debug"] }
+puzzle-term = { path = "../puzzle-term", features = ["test-scenes"] }
+wgpu = { workspace = true, features = ["wgsl", "metal", "vulkan", "dx12", "gles"] }
+winit.workspace = true
+portable-pty.workspace = true
+# R4 (2026-10-11): image clipboard codecs belong to the harness only.
+arboard = { workspace = true, features = ["image-data"] }
+png.workspace = true
+fontique.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+serde_json.workspace = true
+
+[dev-dependencies]
+puzzle-embed = { path = "../puzzle-embed", features = ["test-support"] }
+allocation-counter.workspace = true
+
+[target.'cfg(target_os = "macos")'.dependencies]
+# Safe changeCount reads invalidate grants when clipboard contents change.
+objc2-app-kit.workspace = true
+# D-53: only this platform shell can subscribe to the native refresh source.
+puzzle-sys = { path = "../puzzle-sys" }
+
+[features]
+# D-59: optional protocol remains absent from ordinary host builds.
+# Shipped builds retain their existing static debug ceiling. Explicit observer
+# builds may disable defaults to collect trace timestamps without elevating any
+# per-frame log above R10's trace level or changing ordinary runtime policy.
+default = ["release-logs"]
+release-logs = ["tracing/release_max_level_debug"]
+# Measures desktop owner/channel stages without entering shipped builds.
+lock-metrics = ["puzzle-embed/lock-metrics"]
+
+[lints]
+workspace = true

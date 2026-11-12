@@ -1,0 +1,9 @@
+[alias]
+xtask = "run --package xtask --"
+
+# Relative to this config's workspace root, including Cargo launched inside a crate.
+[build]
+target-dir = "target"
+
+[target.wasm32-unknown-unknown]
+rustflags = ["-C", "target-feature=+simd128"]

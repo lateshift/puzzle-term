@@ -1,0 +1,9 @@
+puzzle$ box drawing preview
+[1;36m╭─────┬─────╮  ┌──┬──┐  ╔══╦══╗[0m
+[1;36m│ one │ two │  │a │b │  ║A ║B ║[0m
+[1;36m├─────┼─────┤  ├──┼──┤  ╠══╬══╣[0m
+[1;36m│ 123 │ 456 │  │c │d │  ║C ║D ║[0m
+[1;36m╰─────┴─────╯  └──┴──┘  ╚══╩══╝[0m
+shades: ░▒▓█  braille: ⠿⣷⣿  powerline: 
+styles: [3mitalic[0m  [7minverse[0m  [1mbold[0m
+puzzle$ done

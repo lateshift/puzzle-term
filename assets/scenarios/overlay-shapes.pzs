@@ -1,0 +1,16 @@
+# Public SVG gradients, round/butt/square caps, joins/dashes and a 5000-point plot.
+size 80x15
+dpr 1
+search-terminal
+feed "SVG gradient / dashed caps and joins / dense translucent plot"
+overlay shapes
+render-terminal
+screenshot shapes-1x
+expect-ink-px 35:180-600:285 2% 35%
+dpr 2
+search-terminal
+feed "SVG gradient / dashed caps and joins / dense translucent plot"
+overlay shapes
+render-terminal
+screenshot shapes-2x
+expect-ink-px 70:360-1200:570 2% 35%

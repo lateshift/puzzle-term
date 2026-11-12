@@ -1,0 +1,21 @@
+[package]
+name = "puzzle-pty-bridge"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+portable-pty.workspace = true
+tokio.workspace = true
+tokio-tungstenite.workspace = true
+getrandom.workspace = true
+futures-util.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+
+[lints]
+workspace = true

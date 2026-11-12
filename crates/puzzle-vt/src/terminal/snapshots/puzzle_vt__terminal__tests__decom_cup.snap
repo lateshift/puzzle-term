@@ -1,0 +1,9 @@
+---
+source: crates/puzzle-vt/src/terminal/tests.rs
+expression: dump(&term)
+---
+cursor=(1,2), pending=false
+······
+·@····
+······
+······

@@ -1,0 +1,10 @@
+---
+source: crates/puzzle-vt/src/terminal/tests.rs
+expression: "format!(\"first\\n{}second\\n{}\", dump(&first), dump(&second))"
+---
+first
+cursor=(0,1), pending=false
+A···
+second
+cursor=(0,2), pending=false
+·A··

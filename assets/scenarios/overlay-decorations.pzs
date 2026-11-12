@@ -1,0 +1,14 @@
+# All declarative kinds, underline styles, inline placements and SVG fits; bundled fonts only.
+size 90x27
+dpr 1
+search-terminal
+overlay decorations
+render-terminal
+expect-ink-px 10:10-720:520 1% 40%
+screenshot decorations-1x
+dpr 2
+search-terminal
+overlay decorations
+render-terminal
+expect-ink-px 20:20-1400:1000 1% 40%
+screenshot decorations-2x

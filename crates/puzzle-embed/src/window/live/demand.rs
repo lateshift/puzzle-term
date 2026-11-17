@@ -50,7 +50,6 @@ impl FrameDemand {
 
 impl super::LiveWindow {
     /// Observation uses existing scalar counters; it never queries the Session owner.
-    #[cfg(target_os = "macos")]
     pub(in crate::window) fn output_pending(&self) -> bool {
         self.frame_demand
             .pending(self.session.parsed_total(), self.session.pending_bytes())

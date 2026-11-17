@@ -30,7 +30,11 @@ pub(crate) fn spawn_login_settings(
 ) -> Result<SpawnedPty, String> {
     // Native shell selection accepts OS strings, including non-UTF-8 executable paths.
     // An unset SHELL preserves the same portable /bin/sh fallback as the harness.
+    // Windows ignores SHELL: MSYS/Git Bash export POSIX paths CreateProcessW cannot resolve.
+    #[cfg(unix)]
     let default_shell = std::env::var_os("SHELL").unwrap_or_else(|| "/bin/sh".into());
+    #[cfg(windows)]
+    let default_shell = std::env::var_os("ComSpec").unwrap_or_else(|| "cmd.exe".into());
     let mut command = CommandBuilder::new(shell.unwrap_or(&default_shell));
     if cfg!(unix) {
         // A native host gets the same shell initialization files as the harness.

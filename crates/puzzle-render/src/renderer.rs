@@ -113,7 +113,8 @@ impl Renderer {
         let (device, queue) = adapter
             .request_device(&wgpu::DeviceDescriptor::default())
             .await?;
-        tracing::debug!("GPU device ready for clear passes");
+        let info = adapter.get_info();
+        tracing::info!(event = "render.adapter", backend = ?info.backend, name = %info.name, driver = %info.driver);
         Ok(Self {
             device,
             queue,

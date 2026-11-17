@@ -23,6 +23,8 @@ tracing-subscriber = { version = "0.3.23", default-features = false, features = 
 tracing-web = "0.1.3"
 thiserror = "2.0"
 winit = "0.30"
+# Windows render-actor waits need 1 ms timer resolution; version already in Cargo.lock.
+windows-sys = { version = "=0.61.2", default-features = false, features = ["Win32_Media"] }
 portable-pty = "0.9"
 # R4 user approval 2026-10-10: safe Unix master duplication; already in Cargo.lock.
 filedescriptor = "=0.8.3"

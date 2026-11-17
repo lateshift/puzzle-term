@@ -191,14 +191,29 @@ pub struct App {
     posted: mpsc::Receiver<Posted>,
     /// AppKit/native-handle destruction cannot move to an arbitrary Rust worker.
     _main_thread: PhantomData<Rc<()>>,
+    /// Render-actor deadline waits overshoot by a whole 15.6 ms tick without it.
+    #[cfg(windows)]
+    _timer: puzzle_sys::timer_resolution::Resolution,
 }
+/// WGPU_BACKEND (e.g. `dx12`, `vulkan`, `gl`) lets a user compare native backends
+/// without a rebuild. wgpu's own `*_from_env` helpers read nothing here: wgpu is
+/// built without its `std` feature, so the variable is read with `std::env` instead.
+fn native_instance_descriptor() -> wgpu::InstanceDescriptor {
+    let mut descriptor = wgpu::InstanceDescriptor::new_without_display_handle();
+    if let Ok(list) = std::env::var("WGPU_BACKEND") {
+        descriptor.backends = wgpu::Backends::from_comma_list(&list);
+        tracing::info!(event = "render.backend_override", backends = ?descriptor.backends);
+    }
+    descriptor
+}
+
 impl App {
     /// Starts one rendering actor; no shell or GPU adapter is needed until surface creation.
     pub fn new(config: AppConfig) -> Result<Self, ApiError> {
         let (posts, posted) = mpsc::channel();
         Ok(Self {
             owner: thread::current().id(),
-            instance: wgpu::Instance::new(wgpu::InstanceDescriptor::new_without_display_handle()),
+            instance: wgpu::Instance::new(native_instance_descriptor()),
             render: RenderThread::start()?,
             decoder: crate::image_decode::worker::Worker::start()?,
             surfaces: BTreeMap::new(),
@@ -209,6 +224,8 @@ impl App {
             posts,
             posted,
             _main_thread: PhantomData,
+            #[cfg(windows)]
+            _timer: puzzle_sys::timer_resolution::Resolution::precise(),
         })
     }
     /// Registration transfers cancellation ownership before returning a host endpoint.

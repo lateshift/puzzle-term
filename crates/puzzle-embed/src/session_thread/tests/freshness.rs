@@ -67,6 +67,24 @@ fn current_answer_after_deadline_preserves_the_previous_complete_source() {
     assert_eq!(replies.len(), 1);
 }
 
+/// A drained stale reply must not report the current request as answered, or the
+/// renderer skips its re-arm and the late answer waits for an unrelated timer.
+#[test]
+fn stale_reply_at_expired_deadline_leaves_current_request_unanswered() {
+    let zero = Instant::now();
+    let mut stale = reply(0, zero);
+    stale.published = false;
+    let mut replies = VecDeque::from([(zero, stale)]);
+    let (newest, answered) = select_replies(
+        1,
+        |_| replies.pop_front().map(|(_, answer)| answer),
+        |_| {},
+        |_| {},
+    );
+    assert!(newest.is_none());
+    assert!(!answered);
+}
+
 /// Clock-independent source data exercises the production queue-selection rule.
 fn reply(id: u64, now: Instant) -> FrameReply {
     let request = FrameRequest {

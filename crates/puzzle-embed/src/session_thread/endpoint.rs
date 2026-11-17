@@ -324,6 +324,8 @@ impl Frames {
 
 /// Selects complete ink while keeping receipt and clocks injectable for D-50 tests.
 /// The receiver's bounded wait is owned by rendering, never by the Session owner.
+/// The flag reports whether `request_id` itself was answered: a drained reply to an
+/// earlier request does not count, so the caller still re-arms for a late answer.
 pub(super) fn select_replies(
     request_id: u64,
     mut receive: impl FnMut(bool) -> Option<FrameReply>,
@@ -331,13 +333,11 @@ pub(super) fn select_replies(
     mut observe: impl FnMut(&mut FrameReply),
 ) -> (Option<FrameReply>, bool) {
     let mut newest: Option<FrameReply> = None;
-    let mut answered = false;
     // A ready reply from the previous refresh is not the answer just requested.
     // Keep the caller's bounded opportunity open until that request is answered.
     let mut current_answered = false;
     let mut reply = receive(true);
     while let Some(mut answer) = reply {
-        answered = true;
         current_answered |= answer.id >= request_id;
         // Registrations and timing belong to every reply, even obsolete ones.
         observe(&mut answer);
@@ -351,7 +351,7 @@ pub(super) fn select_replies(
         }
         reply = receive(!current_answered);
     }
-    (newest, answered)
+    (newest, current_answered)
 }
 
 impl Handle {

@@ -40,6 +40,10 @@ allocation-counter.workspace = true
 # D-53: the engine owns subscriptions; the host still supplies display identity.
 puzzle-sys = { path = "../puzzle-sys" }
 
+[target.'cfg(windows)'.dependencies]
+# The App holds a 1 ms timer-resolution guard while its render actor runs.
+puzzle-sys = { path = "../puzzle-sys" }
+
 [features]
 # Protocol implementation is absent from ordinary desktop builds.
 # Linking alone grants no producer authority and registers no surface.

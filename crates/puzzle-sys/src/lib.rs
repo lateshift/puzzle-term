@@ -7,6 +7,9 @@
     clippy::multiple_unsafe_ops_per_block
 )]
 
+/// Process-wide timer resolution for precise deadline waits (Windows only).
+pub mod timer_resolution;
+
 /// Display-paced wakeups; foreign objects never contain surface pointers.
 pub mod display_link;
 

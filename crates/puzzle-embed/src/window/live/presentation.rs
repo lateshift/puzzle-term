@@ -276,7 +276,9 @@ impl LiveWindow {
         let Some(answer) = newest else {
             tracing::trace!(target: "puzzle_desktop::scheduling", event="desktop.snapshot_empty",
                 id, answered, pending_bytes=self.session.pending_bytes());
-            // Owner publication rearmed its wake; a timeout still needs the next refresh.
+            // Only an answer to this request means the owner had nothing to draw.
+            // A late current answer (e.g. behind an expired deadline, with only a
+            // stale reply drained) waits in the queue: request the refresh that takes it.
             if !answered {
                 self.window.request_redraw();
             }

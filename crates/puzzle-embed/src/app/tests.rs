@@ -104,6 +104,7 @@ pub(super) fn app() -> (App, mpsc::Receiver<()>) {
         wakeup: Arc::new(move || {
             let _ = send.send(());
         }),
+        display: None,
     })
     .unwrap();
     (app, receive)

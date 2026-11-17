@@ -315,6 +315,7 @@ pub(crate) fn run(options: RunOptions) -> Result<(), String> {
         wakeup: Arc::new(move || {
             let _ = wake.send_event(WakeEvent::SessionResults);
         }),
+        display: Some(Box::new(event_loop.owned_display_handle())),
     })
     .map_err(|error| error.to_string())?;
     let mut app = WindowApp {

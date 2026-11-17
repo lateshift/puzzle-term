@@ -23,6 +23,20 @@
 //! No CPU mirror readback or blocking GPU wait is part of array growth.
 //! Paint-table growth also replaces this binding, so affine bitmap rows never
 //! read the previous texture after Slug paints migrate to a larger allocation.
+/// Layers actually allocated for `pages` requested pages.
+///
+/// wgpu's GL backend infers the GL target from the layer count alone: a
+/// one-layer D2 texture becomes `GL_TEXTURE_2D`, and the shader's
+/// `sampler2DArray` then reads zero coverage from it, so no glyph appeared.
+/// GL gets one unused padding layer instead; the budget keeps counting the
+/// requested pages, so a minimum budget still admits its first page.
+fn physical_layers(device: &wgpu::Device, pages: u32) -> u32 {
+    if pages == 1 && device.adapter_info().backend == wgpu::Backend::Gl {
+        2
+    } else {
+        pages
+    }
+}
 /// Creates a 2048-square array with an explicit coverage/color format.
 pub(super) fn atlas(
     device: &wgpu::Device,
@@ -34,7 +48,7 @@ pub(super) fn atlas(
         size: wgpu::Extent3d {
             width: super::PAGE,
             height: super::PAGE,
-            depth_or_array_layers: layers,
+            depth_or_array_layers: physical_layers(device, layers),
         },
         mip_level_count: 1,
         sample_count: 1,

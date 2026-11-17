@@ -66,6 +66,30 @@ pub struct Renderer {
     /// Cold GPU coverage tickets bridge the producer and executor on the same device.
     pub(crate) masks: std::sync::Arc<std::sync::Mutex<crate::mask_baker::Tickets>>,
 }
+/// WebGPU default limits, minus compute and storage resources the renderer never binds.
+///
+/// GL drivers without compute shaders, such as Mesa's d3d12 GLES context under
+/// WSLg, report zero for these limits and would reject the plain defaults. Every
+/// other limit keeps its WebGPU default, so an adapter that is too weak for the
+/// actual pipelines still fails here, at startup, with a named limit.
+fn device_descriptor() -> wgpu::DeviceDescriptor<'static> {
+    wgpu::DeviceDescriptor {
+        required_limits: wgpu::Limits {
+            max_storage_buffers_per_shader_stage: 0,
+            max_storage_textures_per_shader_stage: 0,
+            max_dynamic_storage_buffers_per_pipeline_layout: 0,
+            max_storage_buffer_binding_size: 0,
+            max_compute_workgroup_storage_size: 0,
+            max_compute_invocations_per_workgroup: 0,
+            max_compute_workgroup_size_x: 0,
+            max_compute_workgroup_size_y: 0,
+            max_compute_workgroup_size_z: 0,
+            max_compute_workgroups_per_dimension: 0,
+            ..wgpu::Limits::default()
+        },
+        ..wgpu::DeviceDescriptor::default()
+    }
+}
 /// Manages device setup and the two M0 clear targets.
 impl Renderer {
     /// Borrows the shared device for platform lifecycle notifications.
@@ -110,9 +134,7 @@ impl Renderer {
             .map_err(|_| RenderError::NoAdapter)?;
         // M0 needs no optional GPU features; default limits also work in browsers.
         // Future pipelines must explicitly request any feature they require.
-        let (device, queue) = adapter
-            .request_device(&wgpu::DeviceDescriptor::default())
-            .await?;
+        let (device, queue) = adapter.request_device(&device_descriptor()).await?;
         let info = adapter.get_info();
         tracing::info!(event = "render.adapter", backend = ?info.backend, name = %info.name, driver = %info.driver);
         Ok(Self {
@@ -126,10 +148,7 @@ impl Renderer {
     /// Recreates a lost device on this surface-compatible adapter.
     /// CPU atlas mirrors remain owned by the host and are re-uploaded afterward.
     pub async fn recreate(&self) -> Result<Self, RenderError> {
-        let (device, queue) = self
-            .adapter
-            .request_device(&wgpu::DeviceDescriptor::default())
-            .await?;
+        let (device, queue) = self.adapter.request_device(&device_descriptor()).await?;
         Ok(Self {
             device,
             queue,

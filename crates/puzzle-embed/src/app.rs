@@ -83,6 +83,12 @@ pub struct AppConfig {
     pub settings: DesktopSettings,
     /// Must be nonblocking and thread-safe, usually posting a native event-loop token.
     pub wakeup: Arc<dyn Fn() + Send + Sync>,
+    /// The host's compositor connection, e.g. winit's `OwnedDisplayHandle`.
+    ///
+    /// wgpu's GL backend needs it to present on Linux (EGL on X11 and Wayland);
+    /// Vulkan, Metal and DX12 ignore it. When set, every surface must come from
+    /// the same display connection. Hosts without one (CALayer, tests) pass None.
+    pub display: Option<Box<dyn wgpu::wgt::WgpuHasDisplayHandle>>,
 }
 
 /// Host actions are values, delivered only by App::tick.
@@ -198,8 +204,13 @@ pub struct App {
 /// WGPU_BACKEND (e.g. `dx12`, `vulkan`, `gl`) lets a user compare native backends
 /// without a rebuild. wgpu's own `*_from_env` helpers read nothing here: wgpu is
 /// built without its `std` feature, so the variable is read with `std::env` instead.
-fn native_instance_descriptor() -> wgpu::InstanceDescriptor {
-    let mut descriptor = wgpu::InstanceDescriptor::new_without_display_handle();
+fn native_instance_descriptor(
+    display: Option<Box<dyn wgpu::wgt::WgpuHasDisplayHandle>>,
+) -> wgpu::InstanceDescriptor {
+    let mut descriptor = match display {
+        Some(display) => wgpu::InstanceDescriptor::new_with_display_handle(display),
+        None => wgpu::InstanceDescriptor::new_without_display_handle(),
+    };
     if let Ok(list) = std::env::var("WGPU_BACKEND") {
         descriptor.backends = wgpu::Backends::from_comma_list(&list);
         tracing::info!(event = "render.backend_override", backends = ?descriptor.backends);
@@ -209,11 +220,12 @@ fn native_instance_descriptor() -> wgpu::InstanceDescriptor {
 
 impl App {
     /// Starts one rendering actor; no shell or GPU adapter is needed until surface creation.
-    pub fn new(config: AppConfig) -> Result<Self, ApiError> {
+    pub fn new(mut config: AppConfig) -> Result<Self, ApiError> {
         let (posts, posted) = mpsc::channel();
+        let descriptor = native_instance_descriptor(config.display.take());
         Ok(Self {
             owner: thread::current().id(),
-            instance: wgpu::Instance::new(native_instance_descriptor()),
+            instance: wgpu::Instance::new(descriptor),
             render: RenderThread::start()?,
             decoder: crate::image_decode::worker::Worker::start()?,
             surfaces: BTreeMap::new(),

@@ -128,7 +128,8 @@ the top of the window changes on screen. While it runs, about 15 s with
 - The app's stderr goes to `%TEMP%\kl_*.log` (`$global:KLLOG`).
 
 For an in-app timeline, add temporary `tracing::info!(target: "keylat", ...)`
-events and run with `RUST_LOG=warn,keylat=info`. Useful places are the PTY
+events and run with `PUZZLE_LOG=warn,keylat=info` (the desktop app reads
+`PUZZLE_LOG`, not `RUST_LOG`). Useful places are the PTY
 read, the pacer's output request, `draw_due`, the snapshot in
 `begin_snapshot`, `publish_frame` and the present call. Use info level:
 `release-logs` compiles trace-level events out of the build.

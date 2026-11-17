@@ -76,6 +76,7 @@ pub unsafe extern "C" fn puzzle_app_new(options: *const AppOptions, out: *mut u6
         let app = App::new(AppConfig {
             settings: settings.clone(),
             wakeup: Arc::new(move || wake(userdata as *mut _)),
+            display: None,
         })
         .map_err(ResultCode::from)?;
         let id = registry::lock()?

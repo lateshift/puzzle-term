@@ -116,6 +116,7 @@ pub(super) fn run(settings: DesktopSettings) -> Result<(), String> {
         wakeup: Arc::new(move || {
             let _ = wake.send_event(WakeEvent::SessionResults);
         }),
+        display: Some(Box::new(event_loop.owned_display_handle())),
     })
     .map_err(|e| e.to_string())?;
     // No recording or fallback configuration is shared mutably by the host.

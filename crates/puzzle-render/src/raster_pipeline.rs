@@ -70,6 +70,10 @@ pub struct RasterPipeline {
     mask: wgpu::Texture,
     /// RGBA8 color page, owned while the bind group samples it.
     color: wgpu::Texture,
+    /// Requested mask pages; the texture may hold a GL padding layer beyond them.
+    mask_pages: u32,
+    /// Requested color pages; the texture may hold a GL padding layer beyond them.
+    color_pages: u32,
     /// Retained declaration needed when array growth replaces views.
     layout: wgpu::BindGroupLayout,
     /// Pixel-aligned text uses one nearest sampler across both arrays.
@@ -144,6 +148,8 @@ impl RasterPipeline {
             viewport,
             mask,
             color,
+            mask_pages: 1,
+            color_pages: 1,
             instances: instance_buffer(device, 1),
             capacity: 1,
             budget_bytes: puzzle_slug::atlas::DEFAULT_BUDGET_BYTES,
@@ -258,16 +264,8 @@ impl RasterPipeline {
             ));
         }
         // Exact whole-page growth respects non-power-of-two configured budgets.
-        let masks = self
-            .mask
-            .size()
-            .depth_or_array_layers
-            .max(if color { 1 } else { page + 1 });
-        let colors = self
-            .color
-            .size()
-            .depth_or_array_layers
-            .max(if color { page + 1 } else { 1 });
+        let masks = self.mask_pages.max(if color { 1 } else { page + 1 });
+        let colors = self.color_pages.max(if color { page + 1 } else { 1 });
         let bytes = super::raster_pipeline::PAGE as usize
             * super::raster_pipeline::PAGE as usize
             * (masks as usize + colors as usize * 4);
@@ -276,6 +274,7 @@ impl RasterPipeline {
                 "combined raster capacity exceeds configured budget".into(),
             ));
         }
+        (self.mask_pages, self.color_pages) = (masks, colors);
         let texture = if color {
             &mut self.color
         } else {

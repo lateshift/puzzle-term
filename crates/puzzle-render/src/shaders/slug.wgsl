@@ -107,10 +107,13 @@ fn SlugDilate(pos: vec4<f32>, tex: vec2<f32>, jac: vec4<f32>,
     return Dilated(vec2<f32>(tex.x + dot(d, jac.xy), tex.y + dot(d, jac.zw)), vpos);
 }
 
-// Expand static quad vertex 0–3 to the reference's pos, tex, jac and bnd.
+// Expand static quad vertex 0–5 to the reference's pos, tex, jac and bnd.
 @vertex
-fn slug_vertex(input: VertexInput, @builtin(vertex_index) vid: u32) -> VertexOutput {
-    // Bits of the static vertex index select the em-space bbox corner.
+fn slug_vertex(input: VertexInput, @builtin(vertex_index) vertex: u32) -> VertexOutput {
+    // The draw is not indexed (see slug_pipeline.rs: Mesa SVGA3D drops
+    // indexed draws with flat varyings). Two triangles share a diagonal.
+    let vid = array<u32, 6>(0u, 1u, 2u, 2u, 1u, 3u)[vertex];
+    // Bits of the corner index select the em-space bbox corner.
     let high_x = (vid & 1u) != 0u;
     let high_y = (vid & 2u) != 0u;
     let corner = vec2<f32>(select(input.bbox.x, input.bbox.z, high_x),

@@ -3,8 +3,8 @@
 //! The 56-byte Rust instance is expanded by the vertex shader into the
 //! reference's five float4 attributes. The pixel shader reads the exact
 //! Rgba32Float curve and Rg16Uint band planes prepared by puzzle-slug.
-//! One immutable pipeline and index buffer serve any number of glyphs;
-//! the instance buffer doubles only when a larger batch arrives.
+//! One immutable pipeline serves any number of glyphs; the instance
+//! buffer doubles only when a larger batch arrives.
 //!
 //! The paint texture has one 256-entry solid-color row in M3. Index zero
 //! selects the instance's packed color; nonzero indexes select a row texel.
@@ -19,13 +19,18 @@
 //! dilation projects a corner into clip space. The fragment stage receives
 //! the resulting em coordinate and flat band metadata through varyings.
 //!
-//! An instance is not a ready-made GPU quad. Four static vertex indexes
-//! choose its bbox corners, and six static triangle indexes connect them.
-//! The pipeline therefore uploads one 56-byte record per shape instead of
-//! four copies of the reference's five float4 vertex attributes. This
-//! reduces upload volume when text changes without altering shader math.
+//! An instance is not a ready-made GPU quad. Six static vertex indexes
+//! choose the bbox corners of its two triangles, as in the raster and rect
+//! pipelines. The pipeline therefore uploads one 56-byte record per shape
+//! instead of four copies of the reference's five float4 vertex attributes.
+//! This reduces upload volume when text changes without altering shader math.
+//!
+//! The draw is deliberately not indexed. Mesa's VMware SVGA3D GL driver
+//! (vmwgfx, e.g. VMware Fusion) silently drops instanced indexed draws whose
+//! fragment stage reads a flat varying: no fragment is written, so every
+//! glyph baked by Slug was blank. Two extra vertex invocations per glyph
+//! are cheaper than a backend- or driver-specific path.
 use puzzle_frame::slug::SlugInstance;
-use wgpu::util::DeviceExt;
 
 /// GPU objects required to draw a batch of Slug instances into one pass.
 ///
@@ -42,8 +47,6 @@ pub struct SlugPipeline {
     bind_layout: wgpu::BindGroupLayout,
     /// Four MVP rows plus viewport dimensions, 80 bytes total.
     uniform: wgpu::Buffer,
-    /// Two triangles use four corners emitted from vertex_index 0–3.
-    index: wgpu::Buffer,
     /// Contiguous plain instance bytes for one Slug batch.
     instances: wgpu::Buffer,
     /// Buffer capacity in instances; growth doubles to avoid per-frame churn.
@@ -60,7 +63,7 @@ mod paint;
 mod setup;
 use setup::{bindings, layout, pipeline};
 
-/// One upload and indexed draw for every contiguous Slug batch.
+/// One upload and instanced draw for every contiguous Slug batch.
 ///
 /// Separating `upload` from `draw` lets the caller finish all queue writes
 /// before opening a render pass. This avoids a per-glyph submission and
@@ -144,9 +147,6 @@ impl SlugPipeline {
         // later solid entries can be uploaded to the texture by index.
         let paint_view = paint.create_view(&wgpu::TextureViewDescriptor::default());
         let bind_group = bindings(device, &bind_layout, &uniform, curves, bands, &paint_view);
-        // The quad index order gives two triangles with a shared diagonal.
-        // All glyphs use the same six u16 values, regardless of outline size.
-        let index = quad_index(device);
         // One instance is enough for an empty or first-glyph scene; doubling
         // later keeps ordinary frames from allocating a new GPU buffer.
         let instances = instance_buffer(device, 1);
@@ -155,7 +155,6 @@ impl SlugPipeline {
             bind_group,
             bind_layout,
             uniform,
-            index,
             instances,
             capacity: 1,
             paint,
@@ -250,7 +249,7 @@ impl SlugPipeline {
     /// Draws the uploaded instances in one pass after the target is cleared.
     ///
     /// The caller controls z-order and scissor state. This method only binds
-    /// Slug resources and emits an indexed draw, so overlay and terminal
+    /// Slug resources and emits an instanced draw, so overlay and terminal
     /// batches can share a render pass without a hidden clear operation.
     pub fn draw(&self, pass: &mut wgpu::RenderPass<'_>, count: u32) {
         self.draw_range(pass, 0..count);
@@ -266,10 +265,10 @@ impl SlugPipeline {
         pass.set_pipeline(&self.pipeline);
         pass.set_bind_group(0, &self.bind_group, &[]);
         pass.set_vertex_buffer(0, self.instances.slice(..));
-        pass.set_index_buffer(self.index.slice(..), wgpu::IndexFormat::Uint16);
+        // Six non-indexed vertices per instance; see the module note on SVGA3D.
         // Instance zero begins at the start of the uploaded contiguous slice;
         // later frame batches can add an offset when their contract arrives.
-        pass.draw_indexed(0..6, 0, range);
+        pass.draw(0..6, range);
     }
 
     /// The reserved paint table remains owned while its bind group exists.
@@ -301,15 +300,6 @@ impl SlugPipeline {
             },
         );
     }
-}
-
-/// Creates the immutable two-triangle index order for each expanded quad.
-fn quad_index(device: &wgpu::Device) -> wgpu::Buffer {
-    device.create_buffer_init(&wgpu::util::BufferInitDescriptor {
-        label: Some("Slug quad index"),
-        contents: bytemuck::cast_slice(&[0u16, 1, 2, 2, 1, 3]),
-        usage: wgpu::BufferUsages::INDEX,
-    })
 }
 
 /// Reserves bytes for instance uploads without initializing a mapped buffer.

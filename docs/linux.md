@@ -122,6 +122,18 @@ enlarged. xterm shows the same effect, and native Windows does not. The app
 reconfigures its surface on every size step (about 1–2 ms per turn on the
 RTX 4050), so this is WSLg's presentation, not ours.
 
+## VMware (Fusion on Apple Silicon)
+
+Tested in an Ubuntu aarch64 guest (GNOME, checked through XWayland). There is no Vulkan
+driver for the VMware GPU, so the default picks GL on Mesa's `SVGA3D`
+driver; `WGPU_BACKEND=vulkan` gives llvmpipe.
+
+SVGA3D silently drops instanced *indexed* draws whose fragment shader reads
+a flat varying: nothing is written. Slug used such a draw, so every glyph it
+baked into the atlas was blank and the window showed only the background and
+cursor. The Slug pipeline now draws six non-indexed vertices per instance,
+like the raster and rect pipelines (`crates/puzzle-render/src/slug_pipeline.rs`).
+
 ## Known gaps
 
 - Wayland is untested outside WSLg, whose compositor crashes.
